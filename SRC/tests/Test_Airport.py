@@ -3,7 +3,7 @@
 
 #   "Libraries" From our project!
 ########################################
-from Airportsfunctions.Airport import *                                                           #   Import all the functions of airport
+from SRC.Airportsfunctions.Airport import *                                                           #   Import all the functions of airport
 ########################################
 
 a1 = Airport("LEBL",  41.297445, 2.0832941)                        #   Define an airport to work
