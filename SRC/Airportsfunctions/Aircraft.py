@@ -1,6 +1,14 @@
+                                        #   Aircraft functions file
+
+#   "Libraries" From our project!
+########################################
+from SRC.Airportsfunctions.Airport import IsSchengenAirport
+########################################
+#   External Libraries!
+########################################
 import matplotlib.pyplot as plt
 import math
-from SRC.Airportsfunctions.Airport import IsSchengenAirport
+########################################
 
 class Aircraft:
     def __init__(self, id, airline, origin, arrival_time):
@@ -19,9 +27,9 @@ def LoadArrivals(filename):
         elem = lines.strip("\t")
         elem = elem.split(" ")
         id = elem[0]
-        airline = elem[1]
+        origin = elem[1]
         arrival_time = elem[2]
-        origin = elem[3]
+        airline = elem[3]
 
         aircrafts.id = id
         aircrafts.airline = airline
@@ -128,7 +136,7 @@ def MapFlights (aircraft_list):                         #REVISAR
     if "LEBL" not in aircraft_list:
         print("Error: LEBL no esta en la base de datos de aeropuertos.")
         return
-    dest_lat = aircraft_list["LEBL"].lat
+    dest_lat = aircraft_list["LEBL"].lat                #????'
     dest_lon = aircraft_list["LEBL"].lon
 
     try:
@@ -156,12 +164,12 @@ def MapFlights (aircraft_list):                         #REVISAR
     except Exception as e:
         print("Error al generar archivo KMl")
 
-def LongDistanceArrivals (aircraft_list):
+def LongDistanceArrivals (aircraft_list):                   #REHACER
     l_flights = []
     if not aircraft_list:
         print("Error: La lista de aviones esta vacía.")
         return l_flights
-    if 'LEBL' not in aircraft_list:
+    if 'LEBL' not in aircraft_list:  #???
         print("Error: LEBL no esta en la base de datos.")
         return l_flights
     lat_dest = math.radians(aircraft_list["LEBL"].lat)
@@ -186,3 +194,15 @@ def LongDistanceArrivals (aircraft_list):
             l_flights.append(aircraft)
         return l_flights
     return None
+
+if __name__ == "__main__":
+    # airport_list = LoadAirports('../Files/Airports.txt')
+    # print(airport_list)
+    aircraft_list = LoadArrivals('../../Files/Arrivals.txt')
+    print(aircraft_list)
+    PlotArrivals(aircraft_list)
+    SaveFlights(aircraft_list, '../../Files/SaveFlights.txt')
+    PlotAirlines(aircraft_list)
+    PlotFlighType(aircraft_list)
+    MapFlights(aircraft_list)
+    LongDistanceArrivals(aircraft_list)

@@ -2,7 +2,7 @@
 
 import tkinter as tk
 from tkinter import messagebox, filedialog
-import Airport
+from SRC.Airportsfunctions.Airport import *
 lista_aeropuertos = []
 
 class AirportManagerApp:
