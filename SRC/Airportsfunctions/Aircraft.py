@@ -1,4 +1,4 @@
-                                        #   Aircraft functions file
+import airports  #   Aircraft functions file
 
 #   "Libraries" From our project!
 ########################################
@@ -128,81 +128,93 @@ def PlotFlighType (aircraft_list):
     plt.legend()
     plt.show()
 
-def MapFlights (aircraft_list):                         #REVISAR
-    if not aircraft_list:
-        print("Error: No hay datos para graficar.")
-        return
+def MapFlights(aircrafts, airports):
+    f = open("mis_vuelos.kml", "w") # Creo el archivo
 
-    if "LEBL" not in aircraft_list:
-        print("Error: LEBL no esta en la base de datos de aeropuertos.")
-        return
-    dest_lat = aircraft_list["LEBL"].lat                #????'
-    dest_lon = aircraft_list["LEBL"].lon
+    # Cabecera KML, escribo el inicio
+    f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+    f.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
+    f.write('<Document>\n')
 
-    try:
-        with open ("trajectories.kml", "w") as file:
-            file.write('<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document>')
-            file.write('<Style id="estilo_schengen"><LineStyle><color>ffff0000</color><width>2</width></LineStyle></Style>')
-            file.write('<Style id="estilo_no_schengen"><LineStyle><color>ff0000ff</color><width>2</width></LineStyle></Style>')
+    #Recorrer la lista de aviones
+    i = 0
+    while i < len(aircrafts):
+        flight = aircrafts[i]  # Cogemos el avión actual
+        origen_vuelo = flight.origin
+        encontrado = False
+        posicion_aero = 0
+        j = 0
+    while j < len(airports):
+        if airports[j].code == flight.origin:
+            encontrado = True
+            posicion_aero = j
+        j=j+1
+    if encontrado:
+        aero = airports[posicion_aero]
 
-            for avion in aircraft_list:
-                origen = avion.origin
-                if origen not in aircraft_list:
-                    continue
+    f.write('<Placemark>\n')
+    f.write(f'<name>Vuelo {flight.id}</name>\n')
+    f.write('<LineString>\n')
+    f.write('<coordinates>\n')
+    # Escribimos: Longitud, Latitud del origen y luego del destino
+    f.write(f'{airport_found.lon},{airport_found.lat},0\n')
+    f.write(f'{dest_lon},{dest_lat},0\n')
+    f.write('</coordinates>\n')
+    f.write('</LineString>\n')
+    f.write('</Placemark>\n')
 
-                orig_lat = aircraft_list[origen].lat
-                orig_lon = aircraft_list[origen].lon
+    i = i + 1 # Pasamos al siguiente avión
+    f.write('</Document>\n')
+    f.write('</kml>\n')
+    f.close()
 
-                if IsSchengenAirport (origen):
-                    estilo = "estilo_schengen"
-                else:
-                    estilo = "estilo_no_schengen"
+import math
+def Haversine(lat1, lon1, lat2, lon2):
+    r = 6371 #Radio Tierra
+    phi1, phi2 = math.radians(lat1), math.radians(lat2)
+    dphi = math.radians(lat2 - lat1)
+    dlambda = math.radians(lon2 - lon1)
+    a = math.sin(dphi / 2) ** 2 + math.cos(phi1) * math.cos(phi2) * math.sin(dlambda / 2) ** 2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    return r * c
 
-                file.write(f'<Placemark><name>Vuelo: {origen} -> LEBL</name><styleUrl>#{estilo}</styleUrl><LineString><tessellate>1</tessellate><coordinates>{orig_lon},{orig_lat},0 {dest_lon},{dest_lat},0</coordinates></LineString></Placemark>')
-            file.write('</Document></kml>')
+def LongDistanceArrivals(aircrafts, airports):
+    # Coordenadas de Barcelona (LEBL)
+    lebl_lat = 41.297445
+    lebl_lon = 2.0832941
+    lista_especial = [] # Lista para guardar los aviones de más de 2000km
+    i = 0
+    codigo_origen = vuelo.origin
+    while i < len(aircrafts):
+        vuelo = aircrafts[i]
 
-    except Exception as e:
-        print("Error al generar archivo KMl")
+        # Buscamos el objeto aeropuerto que coincide con el origen del vuelo
+        j = 0
+        encontrado = False
+        while j < len(airports):
+            if airports[j].code == codigo_origen:
+                # Si lo encontramos, calculamos la distancia
+                dist = Haversine(airports[j].lat, airports[j].lon, lebl_lat, lebl_lon)
 
-def LongDistanceArrivals (aircraft_list):                   #REHACER
-    l_flights = []
-    if not aircraft_list:
-        print("Error: La lista de aviones esta vacía.")
-        return l_flights
-    if 'LEBL' not in aircraft_list:  #???
-        print("Error: LEBL no esta en la base de datos.")
-        return l_flights
-    lat_dest = math.radians(aircraft_list["LEBL"].lat)
-    lon_dest = math.radians(aircraft_list["LEBL"].lon)
-    radio_tierra = 6371.0
+                # Si la distancia es mayor a 2000 km, lo añadimos a la lista
+                if dist > 2000:
+                    lista_especial.append(vuelo)
+                encontrado = True  # Para saber que ya hemos procesado este avión
+            j = j + 1
 
-    for aircraft in aircraft_list:
-        origin = aircraft.origin
+        i = i + 1
 
-        if origin not in aircraft_list: continue
+    return lista_especial
 
-        lat_origen = math.radians(aircraft_list[origin].lat)
-        lon_origen = math.radians(aircraft_list[origin].lon)
-
-        delta_lat = abs(lat_dest - lat_origen)
-        delta_lon = abs(lon_dest - lon_origen)
-
-        a = (math.sin(delta_lat / 2)**2) + math.cos(lat_origen) * math.cos(lat_dest) * (math.sin(delta_lon / 2) ** 2)
-        c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-        distancia_km = radio_tierra * c
-        if distancia_km > 2000:
-            l_flights.append(aircraft)
-        return l_flights
-    return None
-
+from Airport import LoadAirports
 if __name__ == "__main__":
-    # airport_list = LoadAirports('../Files/Airports.txt')
-    # print(airport_list)
+    airport_list = LoadAirports('../../Files/Airports.txt')
+    print(airport_list)
     aircraft_list = LoadArrivals('../../Files/Arrivals.txt')
     print(aircraft_list)
     PlotArrivals(aircraft_list)
     SaveFlights(aircraft_list, '../../Files/SaveFlights.txt')
     PlotAirlines(aircraft_list)
     PlotFlighType(aircraft_list)
-    MapFlights(aircraft_list)
+    MapFlights(aircraft_list, airport_list)
     LongDistanceArrivals(aircraft_list)
