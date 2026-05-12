@@ -1,8 +1,8 @@
-import airports  #   Aircraft functions file
+from SRC.Airportsfunctions.Airport import *  #   Aircraft functions file
 
 #   "Libraries" From our project!
 ########################################
-from SRC.Airportsfunctions.Airport import IsSchengenAirport
+from SRC.Airportsfunctions.Airport import *
 ########################################
 #   External Libraries!
 ########################################
@@ -10,36 +10,38 @@ import matplotlib.pyplot as plt
 import math
 ########################################
 
+####################################################    Aircraft Class  ####################################################################
 class Aircraft:
     def __init__(self, id, airline, origin, arrival_time):
-        self.id = id
-        self.airline = airline
-        self.origin = origin
-        self.arrival_time = arrival_time
+        self.id = id                                                    #   ID del Avion
+        self.airline = airline                                          #   Aerolinea Asociada
+        self.origin = origin                                            #   Origen del Avion
+        self.arrival_time = arrival_time                                #   Hora de llegada
 
+####################################################    Load Arrivals   #######################################################################
 def LoadArrivals(filename):
-    file = open(filename, "r")  # Load the txt airport file
-    next(file)  # Ignore the first line
-    lines = file.readline()  # Defines the var lines
-    aircraft_list = []
-    while lines != "":
+    file = open(filename, "r")                                                                  #   Carga el archivo .txt
+    next(file)                                                                                  #   Ignore the first line
+    lines = file.readline()                                                                     #   Defines the var lines
+    aircraft_list = []                                                                          #   Creamos la lista de Aviones
+    while lines != "":                                                                          #   Mientras no hayan lineas vacias
         aircrafts = Aircraft("None", "None", 0, "None")
-        elem = lines.strip("\t")
-        elem = elem.split(" ")
-        id = elem[0]
-        origin = elem[1]
-        arrival_time = elem[2]
-        airline = elem[3]
+        elem = lines.strip("\t")                                                                #
+        elem = elem.split(" ")                                                                  #
+        id = elem[0]                                                                            #
+        origin = elem[1]                                                                        #
+        arrival_time = elem[2]                                                                  #
+        airline = elem[3]                                                                       #
 
-        aircrafts.id = id
-        aircrafts.airline = airline
-        aircrafts.origin = origin
-        aircrafts.arrival_time = arrival_time
+        aircrafts.id = id                                                                       #
+        aircrafts.airline = airline                                                             #
+        aircrafts.origin = origin                                                               #
+        aircrafts.arrival_time = arrival_time                                                   #
 
-        aircraft_list.append(aircrafts)
-        lines = file.readline()
-    file.close()
-    return aircraft_list
+        aircraft_list.append(aircrafts)                                                         #
+        lines = file.readline()                                                                 #
+    file.close()                                                                                #   Cierra el programa
+    return aircraft_list                                                                        #   Devuelve la lista de Aviones
 
 def PlotArrivals(aircraft_list):
     if len(aircraft_list) == 0:
@@ -128,7 +130,8 @@ def PlotFlighType (aircraft_list):
     plt.legend()
     plt.show()
 
-def MapFlights(aircrafts, airports):
+def MapFlights(aircrafts):
+
     f = open("mis_vuelos.kml", "w") # Creo el archivo
 
     # Cabecera KML, escribo el inicio
@@ -138,37 +141,27 @@ def MapFlights(aircrafts, airports):
 
     #Recorrer la lista de aviones
     i = 0
-    while i < len(aircrafts):
+
+    while i < len(airport_list):
         flight = aircrafts[i]  # Cogemos el avión actual
-        origen_vuelo = flight.origin
-        encontrado = False
-        posicion_aero = 0
-        j = 0
-    while j < len(airports):
-        if airports[j].code == flight.origin:
-            encontrado = True
-            posicion_aero = j
-        j=j+1
-    if encontrado:
-        aero = airports[posicion_aero]
 
-    f.write('<Placemark>\n')
-    f.write(f'<name>Vuelo {flight.id}</name>\n')
-    f.write('<LineString>\n')
-    f.write('<coordinates>\n')
-    # Escribimos: Longitud, Latitud del origen y luego del destino
-    f.write(f'{airport_found.lon},{airport_found.lat},0\n')
-    f.write(f'{dest_lon},{dest_lat},0\n')
-    f.write('</coordinates>\n')
-    f.write('</LineString>\n')
-    f.write('</Placemark>\n')
+        f.write('<Placemark>\n')
+        f.write(f'<name>Vuelo {flight.id}</name>\n')
+        f.write('<LineString>\n')
+        f.write('<coordinates>\n')
+        # Escribimos: Longitud, Latitud del origen y luego del destino
+        f.write(f'{airport_list[i].lon},{airport_list[i].lat},0\n')
+        f.write(f'{'2.085'},{'41.2971'},0\n')
+        f.write('</coordinates>\n')
+        f.write('</LineString>\n')
+        f.write('</Placemark>\n')
 
-    i = i + 1 # Pasamos al siguiente avión
+        i = i + 1 # Pasamos al siguiente avión
+
     f.write('</Document>\n')
     f.write('</kml>\n')
     f.close()
 
-import math
 def Haversine(lat1, lon1, lat2, lon2):
     r = 6371 #Radio Tierra
     phi1, phi2 = math.radians(lat1), math.radians(lat2)
@@ -178,43 +171,44 @@ def Haversine(lat1, lon1, lat2, lon2):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     return r * c
 
-def LongDistanceArrivals(aircrafts, airports):
+def LongDistanceArrivals(aircrafts):
     # Coordenadas de Barcelona (LEBL)
     lebl_lat = 41.297445
     lebl_lon = 2.0832941
     lista_especial = [] # Lista para guardar los aviones de más de 2000km
     i = 0
-    codigo_origen = vuelo.origin
+
     while i < len(aircrafts):
-        vuelo = aircrafts[i]
+        codigo_origen = aircrafts[i].origin
 
         # Buscamos el objeto aeropuerto que coincide con el origen del vuelo
         j = 0
         encontrado = False
-        while j < len(airports):
-            if airports[j].code == codigo_origen:
+        while j < len(airport_list) and not encontrado:
+            if airport_list[j].icao == codigo_origen:
                 # Si lo encontramos, calculamos la distancia
-                dist = Haversine(airports[j].lat, airports[j].lon, lebl_lat, lebl_lon)
+                dist = Haversine(airport_list[j].lat, airport_list[j].lon, lebl_lat, lebl_lon)
 
                 # Si la distancia es mayor a 2000 km, lo añadimos a la lista
                 if dist > 2000:
-                    lista_especial.append(vuelo)
+                    lista_especial.append(aircrafts[i])
                 encontrado = True  # Para saber que ya hemos procesado este avión
             j = j + 1
-
         i = i + 1
 
     return lista_especial
 
-from Airport import LoadAirports
 if __name__ == "__main__":
+
     airport_list = LoadAirports('../../Files/Airports.txt')
     print(airport_list)
     aircraft_list = LoadArrivals('../../Files/Arrivals.txt')
     print(aircraft_list)
+
     PlotArrivals(aircraft_list)
     SaveFlights(aircraft_list, '../../Files/SaveFlights.txt')
     PlotAirlines(aircraft_list)
     PlotFlighType(aircraft_list)
-    MapFlights(aircraft_list, airport_list)
-    LongDistanceArrivals(aircraft_list)
+
+    MapFlights(aircraft_list)
+    print(LongDistanceArrivals(aircraft_list))
