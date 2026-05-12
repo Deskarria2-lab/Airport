@@ -206,7 +206,6 @@ def LongDistanceArrivals(aircrafts, airports):
 
     return lista_especial
 
-from Airport import LoadAirports
 if __name__ == "__main__":
     airport_list = LoadAirports('../../Files/Airports.txt')
     print(airport_list)

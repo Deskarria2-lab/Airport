@@ -24,7 +24,7 @@ class Airport:
                             #   Function to check if the airport it's schengen  #
 def IsSchengenAirport(icao):
     icao = icao[:2].upper()                                                     # Select first 2 letters and put it on Mayusc
-    i = 0                                                                       # Counter
+    i = 0# Counter
     found = False
     while i < len(sch_list) and not found:                                     # While the count is <= lenght and not found
         if icao == sch_list[i][:2]:                                              # Checks if the icao is on the schengen list
@@ -122,21 +122,26 @@ def RemoveAirport(airports, icao):
     return airports
 
                                 #   Change!!!!!
+import matplotlib.pyplot as plt
 def PlotAirport(airports):
-    sch_list = 0
-    n_sch_list = 0
-    i = 0
-    while i < len(airports):
-        if IsSchengenAirport(str(airports[i].icao)):
-            sch_list += 1
+    sch_count = 0
+    n_sch_count = 0
+
+    for ap in airports:
+        if IsSchengenAirport(ap.icao):
+            sch_count += 1
         else:
-            n_sch_list += 1
-        i += 1
-    x = "Airports"
-    y = [sch_list, n_sch_list]
+            n_sch_count += 1
+
+    categorias = ["Schengen", "No Schengen"]
+    valores = [sch_count, n_sch_count]
+
     fig, ax = plt.subplots()
-    ax.bar(x,y)
-    # plt.ylabel("Airports")
+    ax.bar(categorias, valores, color=['blue', 'gray'])
+
+    ax.set_ylabel("Número de Aeropuertos")
+    ax.set_title("Distribución Schengen")
+
     plt.show()
 
 def MapAirport(airports):

@@ -82,7 +82,7 @@ class AirportManagerApp:
     def load_airports(self):
         file = filedialog.askopenfilename(filetypes=[("Text", "*.txt")])
         if not file: return
-        self.airports_list = Airport.LoadAirports(file)
+        self.airports_list = LoadAirports(file)
         self.update_airports()
 
     def add_airport(self):
@@ -109,7 +109,7 @@ class AirportManagerApp:
             Airport.SaveSchengenAirports(self.airports_list, file)
 
     def plot_airports(self):
-        Airport.PlotAirport(self.airports_list)
+        PlotAirport(self.airports_list)
 
     def map_airports(self):
         Airport.MapAirport(self.airports_list)
