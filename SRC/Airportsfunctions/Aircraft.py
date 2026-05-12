@@ -43,64 +43,78 @@ def LoadArrivals(filename):
     file.close()                                                                                #   Cierra el programa
     return aircraft_list                                                                        #   Devuelve la lista de Aviones
 
-def PlotArrivals(aircraft_list):
-    if len(aircraft_list) == 0:
-        print("Error: La lista de vuelos está vacía.")
-        return
-    h_cont = [0] * 24
-    i=0
-    while i < len(aircraft_list):
-        aircraft = aircraft_list[i]
-        partes_hora = aircraft.arrival_time.split(':')
-        hora_entera = int(partes_hora[0])
-        if 0 <= hora_entera < 24:
-            h_cont[hora_entera] += 1
-        i += 1
+####################################################    PlotA Arrivals  ###########################################################
 
-    horas = list(range(24))
-    plt.bar(horas, h_cont, color='blue')
-    plt.title("Frecuencia de Aterrizajes por Hora")
-    plt.xlabel("Hora")
-    plt.ylabel("Número de aviones")
+def PlotArrivals(aircraft_list):
+    if len(aircraft_list) == 0:                                                                 #   Comprobamos si no tenemos datos cargados en lista
+        print("Error: La lista de vuelos está vacía.")                                          #   Muestras el Error
+        return
+    h_cont = [0] * 24                                                                           #   Creamos lista de 24 unidades / 1 h -> 1 u
+    i=0                                                                                         #   Inicializamos contador en 0
+    while i < len(aircraft_list):                                                               #   Cuando el contador es mas pequeño que lista
+        aircraft = aircraft_list[i]                                                             #   Por comodidad simplificamos el elemento i de la lista aeropuerto
+        partes_hora = aircraft.arrival_time.split(':')                                          #   Del atributo tiempo de llegada  separamos hora y minuto
+        hora_entera = int(partes_hora[0])                                                       #   Seleccionas la hora
+
+        if 0 <= hora_entera < 24:                                                               #   Seguridad redundante, comprobar que la hora es coherente
+            h_cont[hora_entera] += 1                                                            #   Añades 1 a h_cont en la posicion de la hora especifica
+
+        i += 1                                                                                  #   Miramos la hora del siguiente avion
+
+    horas = list(range(24))                                                                     #   Creamos 24 espacios para el eje x
+    plt.bar(horas, h_cont, color='blue')                                                        #   Diagrama de barras h_cont(horas)
+    plt.title("Frecuencia de Aterrizajes por Hora")                                             #   Titulo de la grafica
+    plt.xlabel("Hora")                                                                          #   Titulo eje X
+    plt.ylabel("Número de aviones")                                                             #   Titulo eje Y
     plt.xticks(horas)
     plt.show()
 
+####################################################    Save Flights    ##################################################################
+
 def SaveFlights(aircraft_list, filename):                               #Casi good
-    if len(aircraft_list) == 0:
-        print("ERROR: La lista de aviones está vacía. No se puede crear el archivo.")
-        return -1 # Devolvemos un código de error (por ejemplo -1)
-    try:
-        with open(filename, "w") as f:
-            f.write("AIRCRAFT ORIGIN ARRIVAL AIRLINE2\n")
-            i = 0
+    if len(aircraft_list) == 0:                                                                 #   Compruebas si la lista aircraft esta vacia
+        print(                                                                                  #   Muestras error en pantalla
+            "ERROR: La lista de aviones está vacía."
+            " No se puede crear el archivo."
+        )
+        return -1                                                                               #   Devolvemos un código de error (por ejemplo -1)
+    
+    try:                                                                                        #   Intenta hacer lo siguiente:                                                                                            
+        with open(filename, "w") as f:                                                          #       -   Abrir el archivo
+            f.write("AIRCRAFT ORIGIN ARRIVAL AIRLINE2\n")                                       #       -   Escribe título de fichero
+            i = 0                                                                               #       -   Contador a 0
+            
             while i < len(aircraft_list):
-                aircraft = aircraft_list[i]
-                id_aircraft = aircraft.id if aircraft.id else "-"
-                origin = aircraft.origin if aircraft.origin else "-"
-                arrival = aircraft.arrival_time if aircraft.arrival_time else "-"
-                airline = aircraft.airline if aircraft.airline else "-"
-                line = f"{id_aircraft} {origin} {arrival} {airline}\n"
-                f.write(line)
-                i += 1
-        print(f"Archivo '{filename}' guardado correctamente.")
-        return 0  # Éxito
-    except FileNotFoundError: print("Error")
+                aircraft = aircraft_list[i]                                                     #       -   Variable para el obj 
+                id_aircraft = aircraft.id if aircraft.id else "-"                               #       -   si aircraft.id != None guarda la variable id_aircraft con aircraft.id, sino "-"
+                origin = aircraft.origin if aircraft.origin else "-"                            #       -   si aircraft.origin != None guarda la variable origin con aircraft.origin, sino "-"
+                arrival = aircraft.arrival_time if aircraft.arrival_time else "-"               #       -   si aircraft.arrival_time != None guarda la variable arrival con aircraft.arrival_time, sino "-"
+                airline = aircraft.airline if aircraft.airline else "-"                         #       -   si aircraft.airline != None guarda la variable airline con aircraft.airline, sino "-"
+                line = f"{id_aircraft} {origin} {arrival} {airline}\n"                          #       -   La línea a escribir es la union de toda esta informacion
+                f.write(line)                                                                   #       -   Escribe la línea en el archivo
+                i += 1                                                                          #       -   Incrementa 1 en el contador
+
+        print(f"Archivo '{filename}' guardado correctamente.")                                  #       -   Avisa que ya esta guardado de forma exitosa
+        return 0                                                                                #       -   Éxito
+    except FileNotFoundError: print("Error")                                                    #   En caso de no encontrar el archivo en question, manda error
+
+####################################################    Plot Airlines   ####################################################################
 
 def PlotAirlines (aircraft_list):
-    if not aircraft_list:
-        print ("Error: No hay datos para graficar.")
+    if not aircraft_list:                                                                       #   Si no hay elementos en la lista
+        print ("Error: No hay datos para graficar.")                                            #   Informar que no puedes graficar nada
         return
 
-    airlines_list = {}
-    for avion in aircraft_list:
-        airline = avion.airline
+    airlines_list = {}                                                                          #   Crea una lista donde guardas los aeropuertos en question
+    for avion in aircraft_list:                                                                 #   Por cada elemento en la lista
+        airline = avion.airline                                                                 #   Miramos el atributo airline del elemento aircraft_list[i]
 
-        if airline in airlines_list:
-            airlines_list[airline] += 1
-        else:
-            airlines_list[airline] = 1
+        if airline in airlines_list:                                                            #   Si la aerolínea está en la lista de aerolíneas
+            airlines_list[airline] += 1                                                         #   Aumenta 1 en la lista de aerolíneas
+        else:                                                                                   #   Si no
+            airlines_list[airline] = 1                                                          #   Resetea la lista
 
-    eje_x = list(airlines_list.keys())
+    eje_x = list(airlines_list.keys())                                                          #   Eje x
     eje_y = list(airlines_list.values())
 
     plt.bar(eje_x, eje_y, color='blue', edgecolor='black')
@@ -108,6 +122,8 @@ def PlotAirlines (aircraft_list):
     plt.xlabel('Aerolinea (ICAO)')
     plt.ylabel('Numero de vuelos')
     plt.show()
+
+####################################################    Plot Fligh Type  ##############################################################
 
 def PlotFlighType (aircraft_list):
     if not aircraft_list:
@@ -129,6 +145,8 @@ def PlotFlighType (aircraft_list):
     plt.ylabel('Numero de llegadas')
     plt.legend()
     plt.show()
+
+####################################################    Map Flights     #############################################################
 
 def MapFlights(aircrafts):
 
