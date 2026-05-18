@@ -2,8 +2,11 @@
 
 import tkinter as tk
 from tkinter import messagebox, filedialog
-from SRC.Airportsfunctions.Airport import *
-from SRC.Airportsfunctions.Aircraft import *
+
+from SRC.Airportsfunctions import Airport
+from SRC.Airportsfunctions.Aircraft import LoadArrivals, SaveFlights, PlotArrivals, PlotAirlines, PlotFlighType
+from SRC.Airportsfunctions.LEBL import LoadAirportStructure, AssignGate, GateOccupancy
+
 lista_aeropuertos = []
 
 class AirportManagerApp:
@@ -14,6 +17,7 @@ class AirportManagerApp:
 
         self.airports_list = []
         self.aircraft_list = []
+        self.bcn_airport = None
 
         self.setup_ui()
 
@@ -76,6 +80,14 @@ class AirportManagerApp:
         tk.Button(frame_bottom, text="Llegadas por hora", command=self.plot_arrivals).pack(side=tk.LEFT, padx=5)
         tk.Button(frame_bottom, text="Por aerolínea", command=self.plot_airlines).pack(side=tk.LEFT, padx=5)
         tk.Button(frame_bottom, text="Schengen vs No", command=self.plot_flight_type).pack(side=tk.LEFT, padx=5)
+        tk.Label(frame_bottom, text=" |  V3 Gates:", fg="blue", font=("Arial", 9, "bold")).pack(side=tk.LEFT, padx=5)
+
+        tk.Button(frame_bottom, text="Cargar Estructura", command=self.load_airport_structure, bg="#e1f5fe").pack(
+            side=tk.LEFT, padx=5)
+        tk.Button(frame_bottom, text="Asignar Puertas", command=self.assign_gates, bg="#e1f5fe").pack(side=tk.LEFT,
+                                                                                                      padx=5)
+        tk.Button(frame_bottom, text="Ver Ocupación", command=self.view_gate_occupancy, bg="#e1f5fe").pack(side=tk.LEFT,
+                                                                                                           padx=5)
 
     # ================= AIRPORTS =================
 
@@ -157,3 +169,4 @@ if __name__ == "__main__":
     ventana = tk.Tk()
     app = AirportManagerApp(ventana)
     ventana.mainloop()
+
