@@ -1,0 +1,2399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Placemark>
+  <name>Vuelo ECMKV (LYBE)</name>
+  <LineString>
+    <coordinates>
+      20.306944444444444,44.81944444444445,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECJGM (EGCC)</name>
+  <LineString>
+    <coordinates>
+      -2.275,53.35388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLOB (LMML)</name>
+  <LineString>
+    <coordinates>
+      14.477500000000001,35.8575,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLVC (LGTS)</name>
+  <LineString>
+    <coordinates>
+      22.97083333333333,40.51972222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DALEC (EBBR)</name>
+  <LineString>
+    <coordinates>
+      4.484444444444445,50.90138888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo N327UP (EDDK)</name>
+  <LineString>
+    <coordinates>
+      7.142777777777778,50.865833333333335,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMKN (LGSR)</name>
+  <LineString>
+    <coordinates>
+      25.479166666666664,36.399166666666666,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DALEN (EDDP)</name>
+  <LineString>
+    <coordinates>
+      12.236388888888888,51.42388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMKT (LGAV)</name>
+  <LineString>
+    <coordinates>
+      23.944444444444446,37.93666666666666,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OEIBZ (EBLG)</name>
+  <LineString>
+    <coordinates>
+      5.442777777777778,50.63638888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo N761AJ (KJFK)</name>
+  <LineString>
+    <coordinates>
+      -73.77833333333334,40.640277777777776,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECKRH (LROP)</name>
+  <LineString>
+    <coordinates>
+      26.084999999999997,44.571111111111115,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo PHXRD (EHAM)</name>
+  <LineString>
+    <coordinates>
+      4.764166666666667,52.308055555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMAI (BIKF)</name>
+  <LineString>
+    <coordinates>
+      -22.605555555555558,63.985,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GRAJG (EBOS)</name>
+  <LineString>
+    <coordinates>
+      2.8622222222222224,51.19888888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OOJEM (EBAW)</name>
+  <LineString>
+    <coordinates>
+      4.460277777777778,51.18944444444444,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLZZ (URKK)</name>
+  <LineString>
+    <coordinates>
+      39.169999999999995,45.03472222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo HALXH (LHBP)</name>
+  <LineString>
+    <coordinates>
+      19.261944444444445,47.43944444444444,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAEBP (EDDM)</name>
+  <LineString>
+    <coordinates>
+      11.786111111111111,48.35388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OOSSW (EBBR)</name>
+  <LineString>
+    <coordinates>
+      4.484444444444445,50.90138888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo VQBTN (UUEE)</name>
+  <LineString>
+    <coordinates>
+      37.41305555555555,55.972500000000004,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OHLZD (EFHK)</name>
+  <LineString>
+    <coordinates>
+      24.96333333333333,60.31722222222223,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DABZA (EDDL)</name>
+  <LineString>
+    <coordinates>
+      6.7572222222222225,51.280833333333334,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo N823NW (KATL)</name>
+  <LineString>
+    <coordinates>
+      -84.43333333333334,33.63333333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIENM (EDDB)</name>
+  <LineString>
+    <coordinates>
+      13.500555555555556,52.36222222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMEA (ULLI)</name>
+  <LineString>
+    <coordinates>
+      30.2625,59.80027777777777,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLZN (LGMK)</name>
+  <LineString>
+    <coordinates>
+      25.34722222222222,37.43722222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAGWT (EDDV)</name>
+  <LineString>
+    <coordinates>
+      9.68361111111111,52.46027777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo PHHSK (EHEH)</name>
+  <LineString>
+    <coordinates>
+      5.374444444444444,51.45,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMGE (UUDD)</name>
+  <LineString>
+    <coordinates>
+      37.906388888888884,55.40861111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAIPZ (EDDL)</name>
+  <LineString>
+    <coordinates>
+      6.7572222222222225,51.280833333333334,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEUUC (EGLL)</name>
+  <LineString>
+    <coordinates>
+      -0.4613888888888889,51.4775,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMEQ (OLBA)</name>
+  <LineString>
+    <coordinates>
+      35.49,33.81916666666667,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OELBR (LOWW)</name>
+  <LineString>
+    <coordinates>
+      16.56972222222222,48.11027777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo N76054 (KEWR)</name>
+  <LineString>
+    <coordinates>
+      -74.16833333333334,40.696666666666665,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo 9VSWD (SBGR)</name>
+  <LineString>
+    <coordinates>
+      -46.47,-23.433333333333334,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OYKBP (EKCH)</name>
+  <LineString>
+    <coordinates>
+      12.65611111111111,55.61805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAGWI (EDDK)</name>
+  <LineString>
+    <coordinates>
+      7.142777777777778,50.865833333333335,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAIDL (EDDF)</name>
+  <LineString>
+    <coordinates>
+      8.570555555555556,50.03333333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECJTR (EHAM)</name>
+  <LineString>
+    <coordinates>
+      4.764166666666667,52.308055555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIFRF (EIDW)</name>
+  <LineString>
+    <coordinates>
+      -6.27,53.421388888888885,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GZBAI (EGKK)</name>
+  <LineString>
+    <coordinates>
+      -0.19027777777777777,51.14805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo TCJNZ (LTBA)</name>
+  <LineString>
+    <coordinates>
+      28.81416666666667,40.976111111111116,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZDU (EDDB)</name>
+  <LineString>
+    <coordinates>
+      13.500555555555556,52.36222222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo B5913 (LOWW)</name>
+  <LineString>
+    <coordinates>
+      16.56972222222222,48.11027777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OELED (LOWW)</name>
+  <LineString>
+    <coordinates>
+      16.56972222222222,48.11027777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GZBAH (EGBB)</name>
+  <LineString>
+    <coordinates>
+      -1.7480555555555557,52.45388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZTG (EGGD)</name>
+  <LineString>
+    <coordinates>
+      -2.7191666666666667,51.382777777777775,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDEJ (EIDW)</name>
+  <LineString>
+    <coordinates>
+      -6.27,53.421388888888885,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo CGHLQ (CYUL)</name>
+  <LineString>
+    <coordinates>
+      -73.74138888888889,45.46805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZPC (EGGP)</name>
+  <LineString>
+    <coordinates>
+      -2.8497222222222223,53.33361111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo PHBXF (EHAM)</name>
+  <LineString>
+    <coordinates>
+      4.764166666666667,52.308055555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIEBK (EGCC)</name>
+  <LineString>
+    <coordinates>
+      -2.275,53.35388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDPM (EGPH)</name>
+  <LineString>
+    <coordinates>
+      -3.3725,55.95,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMBK (UWKD)</name>
+  <LineString>
+    <coordinates>
+      49.280277777777776,55.606944444444444,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZBD (EGAA)</name>
+  <LineString>
+    <coordinates>
+      -6.215833333333333,54.6575,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDHP (EGBB)</name>
+  <LineString>
+    <coordinates>
+      -1.7480555555555557,52.45388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDWK (EBBR)</name>
+  <LineString>
+    <coordinates>
+      4.484444444444445,50.90138888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo YRBGI (LROP)</name>
+  <LineString>
+    <coordinates>
+      26.084999999999997,44.571111111111115,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo YRBAP (LROP)</name>
+  <LineString>
+    <coordinates>
+      26.084999999999997,44.571111111111115,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLUT (LLBG)</name>
+  <LineString>
+    <coordinates>
+      34.885555555555555,32.00944444444445,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEUUO (EGLL)</name>
+  <LineString>
+    <coordinates>
+      -0.4613888888888889,51.4775,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo N790AN (KMIA)</name>
+  <LineString>
+    <coordinates>
+      -80.28333333333333,25.8,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZWN (EGKK)</name>
+  <LineString>
+    <coordinates>
+      -0.19027777777777777,51.14805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo SXDGQ (LGAV)</name>
+  <LineString>
+    <coordinates>
+      23.944444444444446,37.93666666666666,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMMU (GCLP)</name>
+  <LineString>
+    <coordinates>
+      -15.386666666666667,27.931944444444447,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo LNRNO (ENGM)</name>
+  <LineString>
+    <coordinates>
+      11.08388888888889,60.20277777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GOZBE (EGCC)</name>
+  <LineString>
+    <coordinates>
+      -2.275,53.35388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo SPLND (EPWA)</name>
+  <LineString>
+    <coordinates>
+      20.96722222222222,52.16583333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo N290AY (KPHL)</name>
+  <LineString>
+    <coordinates>
+      -75.245,39.87,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo VQBHK (UUEE)</name>
+  <LineString>
+    <coordinates>
+      37.41305555555555,55.972500000000004,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMMH (GCXO)</name>
+  <LineString>
+    <coordinates>
+      -16.341666666666665,28.482777777777777,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo VPBWG (ULLI)</name>
+  <LineString>
+    <coordinates>
+      30.2625,59.80027777777777,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMBY (LDZA)</name>
+  <LineString>
+    <coordinates>
+      16.06888888888889,45.74305555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAIDF (EDDM)</name>
+  <LineString>
+    <coordinates>
+      11.786111111111111,48.35388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDCJ (EGSS)</name>
+  <LineString>
+    <coordinates>
+      0.23500000000000001,51.885,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo LNNGP (ENGM)</name>
+  <LineString>
+    <coordinates>
+      11.08388888888889,60.20277777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZBI (EGGW)</name>
+  <LineString>
+    <coordinates>
+      -0.3683333333333333,51.874722222222225,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLQM (EBBR)</name>
+  <LineString>
+    <coordinates>
+      4.484444444444445,50.90138888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GCELG (EGCC)</name>
+  <LineString>
+    <coordinates>
+      -2.275,53.35388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAISG (EDDF)</name>
+  <LineString>
+    <coordinates>
+      8.570555555555556,50.03333333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo N900JG (LLBG)</name>
+  <LineString>
+    <coordinates>
+      34.885555555555555,32.00944444444445,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo LNDYW (EKCH)</name>
+  <LineString>
+    <coordinates>
+      12.65611111111111,55.61805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo CFIYE (CYYZ)</name>
+  <LineString>
+    <coordinates>
+      -79.63055555555555,43.67722222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMJC (LDSP)</name>
+  <LineString>
+    <coordinates>
+      16.298055555555557,43.538888888888884,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLQK (LLBG)</name>
+  <LineString>
+    <coordinates>
+      34.885555555555555,32.00944444444445,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo CNRGG (GMMN)</name>
+  <LineString>
+    <coordinates>
+      -7.581666666666666,33.36416666666667,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMJR (EGGW)</name>
+  <LineString>
+    <coordinates>
+      -0.3683333333333333,51.874722222222225,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLQL (EDDM)</name>
+  <LineString>
+    <coordinates>
+      11.786111111111111,48.35388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GGDFK (EGNM)</name>
+  <LineString>
+    <coordinates>
+      -1.6608333333333332,53.86611111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLRG (EDDP)</name>
+  <LineString>
+    <coordinates>
+      12.236388888888888,51.42388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo N803NW (KJFK)</name>
+  <LineString>
+    <coordinates>
+      -73.77833333333334,40.640277777777776,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEUYC (EGLL)</name>
+  <LineString>
+    <coordinates>
+      -0.4613888888888889,51.4775,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo N283AY (KCLT)</name>
+  <LineString>
+    <coordinates>
+      -80.95,35.21666666666667,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMGF (EDDF)</name>
+  <LineString>
+    <coordinates>
+      8.570555555555556,50.03333333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMLD (EHAM)</name>
+  <LineString>
+    <coordinates>
+      4.764166666666667,52.308055555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZWZ (EGKK)</name>
+  <LineString>
+    <coordinates>
+      -0.19027777777777777,51.14805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo PHBXP (EHAM)</name>
+  <LineString>
+    <coordinates>
+      4.764166666666667,52.308055555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo CFDAT (CYUL)</name>
+  <LineString>
+    <coordinates>
+      -73.74138888888889,45.46805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDHG (EDDH)</name>
+  <LineString>
+    <coordinates>
+      9.988333333333333,53.63027777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo CGTSW (CYYZ)</name>
+  <LineString>
+    <coordinates>
+      -79.63055555555555,43.67722222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLZO (EGKK)</name>
+  <LineString>
+    <coordinates>
+      -0.19027777777777777,51.14805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo N76062 (KIAD)</name>
+  <LineString>
+    <coordinates>
+      -77.45666666666666,38.94499999999999,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo URPSS (UKBB)</name>
+  <LineString>
+    <coordinates>
+      30.893333333333334,50.344722222222224,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo 4XELD (LLBG)</name>
+  <LineString>
+    <coordinates>
+      34.885555555555555,32.00944444444445,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIEBA (EGNX)</name>
+  <LineString>
+    <coordinates>
+      -1.3277777777777777,52.83111111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLZE (LFQQ)</name>
+  <LineString>
+    <coordinates>
+      3.0869444444444447,50.56333333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAISW (EDDF)</name>
+  <LineString>
+    <coordinates>
+      8.570555555555556,50.03333333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo PHXRX (EHEH)</name>
+  <LineString>
+    <coordinates>
+      5.374444444444444,51.45,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo TCJVM (LTFJ)</name>
+  <LineString>
+    <coordinates>
+      29.309166666666666,40.89833333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLVP (LKPR)</name>
+  <LineString>
+    <coordinates>
+      14.26,50.100833333333334,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo URPSO (UKBB)</name>
+  <LineString>
+    <coordinates>
+      30.893333333333334,50.344722222222224,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLRM (EGBB)</name>
+  <LineString>
+    <coordinates>
+      -1.7480555555555557,52.45388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo A7AEC (OTHH)</name>
+  <LineString>
+    <coordinates>
+      51.608333333333334,25.274444444444445,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo LNDYB (ESGG)</name>
+  <LineString>
+    <coordinates>
+      12.29111111111111,57.66,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo A6EOP (OMDB)</name>
+  <LineString>
+    <coordinates>
+      55.36,25.249166666666667,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAKNQ (EDDT)</name>
+  <LineString>
+    <coordinates>
+      13.287777777777778,52.55972222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAGWE (EDDH)</name>
+  <LineString>
+    <coordinates>
+      9.988333333333333,53.63027777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OKNEN (LKPR)</name>
+  <LineString>
+    <coordinates>
+      14.26,50.100833333333334,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIENL (GMMX)</name>
+  <LineString>
+    <coordinates>
+      -8.040833333333333,31.608611111111113,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo TCJHZ (LTBA)</name>
+  <LineString>
+    <coordinates>
+      28.81416666666667,40.976111111111116,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDHT (EYVI)</name>
+  <LineString>
+    <coordinates>
+      25.28777777777778,54.636944444444445,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo TCCPG (LTFJ)</name>
+  <LineString>
+    <coordinates>
+      29.309166666666666,40.89833333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo SUGCE (HECA)</name>
+  <LineString>
+    <coordinates>
+      31.413888888888888,30.11138888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEUUY (EGLL)</name>
+  <LineString>
+    <coordinates>
+      -0.4613888888888889,51.4775,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMEA (GMFF)</name>
+  <LineString>
+    <coordinates>
+      -4.977777777777778,33.92722222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLTG (ETNL)</name>
+  <LineString>
+    <coordinates>
+      12.278333333333334,53.91916666666666,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAIRA (EDDM)</name>
+  <LineString>
+    <coordinates>
+      11.786111111111111,48.35388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECJYX (EHAM)</name>
+  <LineString>
+    <coordinates>
+      4.764166666666667,52.308055555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZPL (EGKK)</name>
+  <LineString>
+    <coordinates>
+      -0.19027777777777777,51.14805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIFJN (EDDB)</name>
+  <LineString>
+    <coordinates>
+      13.500555555555556,52.36222222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo PHXRD (EHAM)</name>
+  <LineString>
+    <coordinates>
+      4.764166666666667,52.308055555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OOSSW (EBBR)</name>
+  <LineString>
+    <coordinates>
+      4.484444444444445,50.90138888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEUYB (EGKK)</name>
+  <LineString>
+    <coordinates>
+      -0.19027777777777777,51.14805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAISE (EDDF)</name>
+  <LineString>
+    <coordinates>
+      8.570555555555556,50.03333333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo N969AV (SKBO)</name>
+  <LineString>
+    <coordinates>
+      -74.15,4.7,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo A6AIN (EGLL)</name>
+  <LineString>
+    <coordinates>
+      -0.4613888888888889,51.4775,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECHOB (LYTV)</name>
+  <LineString>
+    <coordinates>
+      18.723333333333333,42.40472222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIFJL (ENBR)</name>
+  <LineString>
+    <coordinates>
+      5.218055555555556,60.29361111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMGY (EPWA)</name>
+  <LineString>
+    <coordinates>
+      20.96722222222222,52.16583333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDAM (EGSS)</name>
+  <LineString>
+    <coordinates>
+      0.23500000000000001,51.885,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIFJM (ESSA)</name>
+  <LineString>
+    <coordinates>
+      17.91861111111111,59.651944444444446,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAISR (EDDF)</name>
+  <LineString>
+    <coordinates>
+      8.570555555555556,50.03333333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OYRUP (GCXO)</name>
+  <LineString>
+    <coordinates>
+      -16.341666666666665,28.482777777777777,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIEFW (EBBR)</name>
+  <LineString>
+    <coordinates>
+      4.484444444444445,50.90138888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo LVCSX (SAEZ)</name>
+  <LineString>
+    <coordinates>
+      -58.53583333333333,-34.82222222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo PHBXG (EHAM)</name>
+  <LineString>
+    <coordinates>
+      4.764166666666667,52.308055555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo VQBBG (UUEE)</name>
+  <LineString>
+    <coordinates>
+      37.41305555555555,55.972500000000004,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo PTMSV (SBGR)</name>
+  <LineString>
+    <coordinates>
+      -46.47,-23.433333333333334,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo CNNMH (GMMN)</name>
+  <LineString>
+    <coordinates>
+      -7.581666666666666,33.36416666666667,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIFJK (EFHK)</name>
+  <LineString>
+    <coordinates>
+      24.96333333333333,60.31722222222223,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMBF (EDDN)</name>
+  <LineString>
+    <coordinates>
+      11.078055555555554,49.49861111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMLE (EHEH)</name>
+  <LineString>
+    <coordinates>
+      5.374444444444444,51.45,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo TCJIP (LTBA)</name>
+  <LineString>
+    <coordinates>
+      28.81416666666667,40.976111111111116,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo TCDCF (LTFJ)</name>
+  <LineString>
+    <coordinates>
+      29.309166666666666,40.89833333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLZN (EGNT)</name>
+  <LineString>
+    <coordinates>
+      -1.6897222222222223,55.03805555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo VPBAS (UUDD)</name>
+  <LineString>
+    <coordinates>
+      37.906388888888884,55.40861111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECJFF (GCFV)</name>
+  <LineString>
+    <coordinates>
+      -13.863888888888889,28.452777777777776,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo LNRRG (ENGM)</name>
+  <LineString>
+    <coordinates>
+      11.08388888888889,60.20277777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo N483CM (LDDU)</name>
+  <LineString>
+    <coordinates>
+      18.26833333333333,42.561388888888885,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMBY (EGGP)</name>
+  <LineString>
+    <coordinates>
+      -2.8497222222222223,53.33361111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DIERF (EDDN)</name>
+  <LineString>
+    <coordinates>
+      11.078055555555554,49.49861111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAIRD (EDDM)</name>
+  <LineString>
+    <coordinates>
+      11.786111111111111,48.35388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECKCU (EBBR)</name>
+  <LineString>
+    <coordinates>
+      4.484444444444445,50.90138888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GTTOE (EGLL)</name>
+  <LineString>
+    <coordinates>
+      -0.4613888888888889,51.4775,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLAA (EDDH)</name>
+  <LineString>
+    <coordinates>
+      9.988333333333333,53.63027777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIEPG (EGGP)</name>
+  <LineString>
+    <coordinates>
+      -2.8497222222222223,53.33361111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMKN (EDDV)</name>
+  <LineString>
+    <coordinates>
+      9.68361111111111,52.46027777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo CNRGG (GMMN)</name>
+  <LineString>
+    <coordinates>
+      -7.581666666666666,33.36416666666667,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAIDQ (EDDF)</name>
+  <LineString>
+    <coordinates>
+      8.570555555555556,50.03333333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMGZ (EGKK)</name>
+  <LineString>
+    <coordinates>
+      -0.19027777777777777,51.14805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZTA (EGKK)</name>
+  <LineString>
+    <coordinates>
+      -0.19027777777777777,51.14805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLRN (LICJ)</name>
+  <LineString>
+    <coordinates>
+      13.099444444444446,38.18194444444444,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECHQI (LIBD)</name>
+  <LineString>
+    <coordinates>
+      16.765,41.13805555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECHQJ (LOWW)</name>
+  <LineString>
+    <coordinates>
+      16.56972222222222,48.11027777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMLD (EDDM)</name>
+  <LineString>
+    <coordinates>
+      11.786111111111111,48.35388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMJR (LIRN)</name>
+  <LineString>
+    <coordinates>
+      14.290833333333333,40.88444444444444,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECKRN (GMMX)</name>
+  <LineString>
+    <coordinates>
+      -8.040833333333333,31.608611111111113,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo PHBXE (EHAM)</name>
+  <LineString>
+    <coordinates>
+      4.764166666666667,52.308055555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLRM (EGFF)</name>
+  <LineString>
+    <coordinates>
+      -3.3433333333333333,51.39666666666667,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GOZBW (EGNM)</name>
+  <LineString>
+    <coordinates>
+      -1.6608333333333332,53.86611111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMMH (GCXO)</name>
+  <LineString>
+    <coordinates>
+      -16.341666666666665,28.482777777777777,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDHX (EGSS)</name>
+  <LineString>
+    <coordinates>
+      0.23500000000000001,51.885,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDHO (ESKN)</name>
+  <LineString>
+    <coordinates>
+      16.90361111111111,58.78861111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMHS (GCRR)</name>
+  <LineString>
+    <coordinates>
+      -13.605277777777777,28.945555555555554,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAISL (EDDF)</name>
+  <LineString>
+    <coordinates>
+      8.570555555555556,50.03333333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo HALPX (LRCL)</name>
+  <LineString>
+    <coordinates>
+      23.692222222222224,46.78916666666667,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo HALWY (EVRA)</name>
+  <LineString>
+    <coordinates>
+      23.97111111111111,56.92361111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo LNDYP (ESSA)</name>
+  <LineString>
+    <coordinates>
+      17.91861111111111,59.651944444444446,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DABZA (EDDL)</name>
+  <LineString>
+    <coordinates>
+      6.7572222222222225,51.280833333333334,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZIM (EDDB)</name>
+  <LineString>
+    <coordinates>
+      13.500555555555556,52.36222222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLQM (EDDT)</name>
+  <LineString>
+    <coordinates>
+      13.287777777777778,52.55972222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAIQK (EDDK)</name>
+  <LineString>
+    <coordinates>
+      7.142777777777778,50.865833333333335,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLRG (EGNM)</name>
+  <LineString>
+    <coordinates>
+      -1.6608333333333332,53.86611111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMFB (ENGM)</name>
+  <LineString>
+    <coordinates>
+      11.08388888888889,60.20277777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DASXJ (EDDL)</name>
+  <LineString>
+    <coordinates>
+      6.7572222222222225,51.280833333333334,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMMU (GCLP)</name>
+  <LineString>
+    <coordinates>
+      -15.386666666666667,27.931944444444447,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLUT (GCXO)</name>
+  <LineString>
+    <coordinates>
+      -16.341666666666665,28.482777777777777,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEUUT (EGLL)</name>
+  <LineString>
+    <coordinates>
+      -0.4613888888888889,51.4775,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo CGDEJ (EHRD)</name>
+  <LineString>
+    <coordinates>
+      4.437222222222222,51.956944444444446,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OEIEW (LOWW)</name>
+  <LineString>
+    <coordinates>
+      16.56972222222222,48.11027777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIEFN (EBBR)</name>
+  <LineString>
+    <coordinates>
+      4.484444444444445,50.90138888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZEG (EGKK)</name>
+  <LineString>
+    <coordinates>
+      -0.19027777777777777,51.14805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo A7ACD (OTHH)</name>
+  <LineString>
+    <coordinates>
+      51.608333333333334,25.274444444444445,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo HALYG (EPKT)</name>
+  <LineString>
+    <coordinates>
+      19.08,50.47416666666667,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZBU (EGMC)</name>
+  <LineString>
+    <coordinates>
+      0.6933333333333334,51.57027777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OHLZB (EFHK)</name>
+  <LineString>
+    <coordinates>
+      24.96333333333333,60.31722222222223,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEUYC (EGLL)</name>
+  <LineString>
+    <coordinates>
+      -0.4613888888888889,51.4775,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo A6EEH (OMDB)</name>
+  <LineString>
+    <coordinates>
+      55.36,25.249166666666667,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OELEF (LOWW)</name>
+  <LineString>
+    <coordinates>
+      16.56972222222222,48.11027777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OOSSK (EBBR)</name>
+  <LineString>
+    <coordinates>
+      4.484444444444445,50.90138888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIEFI (EIDW)</name>
+  <LineString>
+    <coordinates>
+      -6.27,53.421388888888885,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZFY (EGNT)</name>
+  <LineString>
+    <coordinates>
+      -1.6897222222222223,55.03805555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo CSTRN (ESSA)</name>
+  <LineString>
+    <coordinates>
+      17.91861111111111,59.651944444444446,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDHH (GCRR)</name>
+  <LineString>
+    <coordinates>
+      -13.605277777777777,28.945555555555554,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo HALYL (LWSK)</name>
+  <LineString>
+    <coordinates>
+      21.62138888888889,41.961666666666666,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDWA (EGPK)</name>
+  <LineString>
+    <coordinates>
+      -4.594444444444444,55.50944444444445,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLOB (EHAM)</name>
+  <LineString>
+    <coordinates>
+      4.764166666666667,52.308055555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZFG (EGGP)</name>
+  <LineString>
+    <coordinates>
+      -2.8497222222222223,53.33361111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDLH (GCLP)</name>
+  <LineString>
+    <coordinates>
+      -15.386666666666667,27.931944444444447,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo HALYO (LBSF)</name>
+  <LineString>
+    <coordinates>
+      23.40833333333333,42.69499999999999,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLZO (EKCH)</name>
+  <LineString>
+    <coordinates>
+      12.65611111111111,55.61805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo N900AL (HTDA)</name>
+  <LineString>
+    <coordinates>
+      39.20333333333333,-6.875555555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAIRB (EDDM)</name>
+  <LineString>
+    <coordinates>
+      11.786111111111111,48.35388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMKT (EFHK)</name>
+  <LineString>
+    <coordinates>
+      24.96333333333333,60.31722222222223,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIFIN (EGCC)</name>
+  <LineString>
+    <coordinates>
+      -2.275,53.35388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GDBCI (EGKK)</name>
+  <LineString>
+    <coordinates>
+      -0.19027777777777777,51.14805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIFHS (ENGM)</name>
+  <LineString>
+    <coordinates>
+      11.08388888888889,60.20277777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZIK (EGGD)</name>
+  <LineString>
+    <coordinates>
+      -2.7191666666666667,51.382777777777775,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo TFBRO (BIKF)</name>
+  <LineString>
+    <coordinates>
+      -22.605555555555558,63.985,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLQL (EGLL)</name>
+  <LineString>
+    <coordinates>
+      -0.4613888888888889,51.4775,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDEE (EIDW)</name>
+  <LineString>
+    <coordinates>
+      -6.27,53.421388888888885,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMGF (EDDF)</name>
+  <LineString>
+    <coordinates>
+      8.570555555555556,50.03333333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ERAXP (LUKK)</name>
+  <LineString>
+    <coordinates>
+      28.930833333333336,46.92777777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIFJL (EKBI)</name>
+  <LineString>
+    <coordinates>
+      9.151666666666667,55.74027777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIFJK (EGKK)</name>
+  <LineString>
+    <coordinates>
+      -0.19027777777777777,51.14805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo YRBGA (LROP)</name>
+  <LineString>
+    <coordinates>
+      26.084999999999997,44.571111111111115,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo TCJRF (LTBA)</name>
+  <LineString>
+    <coordinates>
+      28.81416666666667,40.976111111111116,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLRY (EDDM)</name>
+  <LineString>
+    <coordinates>
+      11.786111111111111,48.35388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDAM (EIDW)</name>
+  <LineString>
+    <coordinates>
+      -6.27,53.421388888888885,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo PHBXK (EHAM)</name>
+  <LineString>
+    <coordinates>
+      4.764166666666667,52.308055555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIENO (LHBP)</name>
+  <LineString>
+    <coordinates>
+      19.261944444444445,47.43944444444444,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEUUG (EGLL)</name>
+  <LineString>
+    <coordinates>
+      -0.4613888888888889,51.4775,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMHB (EGKK)</name>
+  <LineString>
+    <coordinates>
+      -0.19027777777777777,51.14805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECJFF (LDDU)</name>
+  <LineString>
+    <coordinates>
+      18.26833333333333,42.561388888888885,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo DAISG (EDDF)</name>
+  <LineString>
+    <coordinates>
+      8.570555555555556,50.03333333333333,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIFJN (ENGM)</name>
+  <LineString>
+    <coordinates>
+      11.08388888888889,60.20277777777778,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMKX (EDDL)</name>
+  <LineString>
+    <coordinates>
+      6.7572222222222225,51.280833333333334,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo VPBZA (UUEE)</name>
+  <LineString>
+    <coordinates>
+      37.41305555555555,55.972500000000004,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIFJM (EKCH)</name>
+  <LineString>
+    <coordinates>
+      12.65611111111111,55.61805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLZN (LKPR)</name>
+  <LineString>
+    <coordinates>
+      14.26,50.100833333333334,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLQK (EIDW)</name>
+  <LineString>
+    <coordinates>
+      -6.27,53.421388888888885,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMGE (EGGW)</name>
+  <LineString>
+    <coordinates>
+      -0.3683333333333333,51.874722222222225,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDCJ (EDDB)</name>
+  <LineString>
+    <coordinates>
+      13.500555555555556,52.36222222222222,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo SXABE (EBBR)</name>
+  <LineString>
+    <coordinates>
+      4.484444444444445,50.90138888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo VPBRI (UUDD)</name>
+  <LineString>
+    <coordinates>
+      37.906388888888884,55.40861111111111,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMGZ (EHAM)</name>
+  <LineString>
+    <coordinates>
+      4.764166666666667,52.308055555555555,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo SXDVV (LGAV)</name>
+  <LineString>
+    <coordinates>
+      23.944444444444446,37.93666666666666,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDHT (EGSS)</name>
+  <LineString>
+    <coordinates>
+      0.23500000000000001,51.885,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo OYRUP (GCLP)</name>
+  <LineString>
+    <coordinates>
+      -15.386666666666667,27.931944444444447,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZWZ (EGKK)</name>
+  <LineString>
+    <coordinates>
+      -0.19027777777777777,51.14805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo YLPSH (BIKF)</name>
+  <LineString>
+    <coordinates>
+      -22.605555555555558,63.985,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo EIDHG (EDDK)</name>
+  <LineString>
+    <coordinates>
+      7.142777777777778,50.865833333333335,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECLZZ (EGKK)</name>
+  <LineString>
+    <coordinates>
+      -0.19027777777777777,51.14805555555556,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo GEZDJ (EGGW)</name>
+  <LineString>
+    <coordinates>
+      -0.3683333333333333,51.874722222222225,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Vuelo ECMLD (EGCC)</name>
+  <LineString>
+    <coordinates>
+      -2.275,53.35388888888889,0
+      2.0832941,41.297445,0
+    </coordinates>
+  </LineString>
+</Placemark>
+</Document>
+</kml>
