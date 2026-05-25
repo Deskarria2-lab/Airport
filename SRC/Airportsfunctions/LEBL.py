@@ -4,26 +4,26 @@
 ####################################################    OBJECTS    #################################################################################
 
 class Gate:                                                         #   Gate Object
-    def __init__(self):
-        self.g_name = None                                          #   Name of the Object
+    def __init__(self, g_name):
+        self.g_name = g_name                                          #   Name of the Object
         self.occupancy = False                                      #   Is the gate occupied?
         self.a_id = None                                            #   ID of the
 
 class BoardingArea:                                                 #   Boarding Area Object
-    def __init__(self):
-        self.b_name = None                                          #   Name of the Boarding Area
-        self.sch = False                                            #   Is schengen the Boarding area?
+    def __init__(self, b_name, sch):
+        self.b_name = b_name                                          #   Name of the Boarding Area
+        self.sch = sch                                            #   Is schengen the Boarding area?
         self.gate_list = []                                         #   List of Gate's
 
 class Terminal:                                                     #   Terminal Object
-    def __init__(self):
-        self.t_name = None
+    def __init__(self, t_name):
+        self.t_name = t_name
         self.b_list = []
         self.icao_list = []
 
 class BarcelonaAP:
-    def __init__(self):
-        self.code = None
+    def __init__(self, code):
+        self.code = code
         self.t_list = []
 
 ###########################################     Functions       #######################################################################################
@@ -92,9 +92,9 @@ def LoadAirportStructure(filename):
             area=BoardingArea(area_name,area_type)
             prefix=name_terminal+area_name
             SetGates(area,init_gate,end_gate,prefix)
-            terminal.boarding_areas.append(area)
+            terminal.b_list.append(area)
             j=j+1
-        bcn.terminals.append(terminal)
+        bcn.t_list.append(terminal)
         i=i+1
     f.close()
     return bcn
@@ -102,26 +102,26 @@ def LoadAirportStructure(filename):
 def GateOccupancy(bcn):
     if bcn is None:
         return []
-    allGates=[]
-    i=0
-    while i<len(bcn.terminals):
-        terminal=bcn.terminals[i]
-        j=0
-        while j<len(terminal.boarding_areas):
-            area=terminal.boarding_areas[j]
+    allGates = []
+    i = 0
+    while i < len(bcn.t_list):
+        terminal=bcn.t_list[i]
+        j = 0
+        while j < len(terminal.b_list):
+            area=terminal.b_list[j]
             k=0
-            while k<len(area.gates):
-                gate=area.gates[k]
-                if gate.occupied:
-                    status="Occupied"
-                    aircraft=gate.aircraft_id
+            while k < len(area.gates):
+                gate = area.gates[k]
+                if gate.occupancy:
+                    status = "Occupied"
+                    aircraft = gate.a_id
                 else:
-                    status="Unoccupied"
-                    aircraft=None
-                allGates.append((gate.name, status, aircraft))
-                k=k+1
-            j=j+1
-        i=i+1
+                    status = "Unoccupied"
+                    aircraft = None
+                allGates.append([gate.g_name, status, aircraft])
+                k = k+1
+            j = j+1
+        i = i+1
     return allGates
 
 def IsAirlineInTerminal(terminal, name):
@@ -144,54 +144,54 @@ def SearchTerminal (bcn, name):
     i=0
     found=False
     terminal=None
-    while i<len(bcn.terminals) and not found:
-        if IsAirlineInTerminal(bcn.terminals[i],name):
-            terminal=bcn.terminals[i]
+    while i<len(bcn.t_list) and not found:
+        if IsAirlineInTerminal(bcn.t_list[i],name):
+            terminal=bcn.t_list[i]
             found=True
         i=i+1
     if found:
-        return terminal.name
+        return terminal.t_name
     if not found:
         return ""
 
-from Airport import IsSchengenAirport
+from SRC.Airportsfunctions.Airport import IsSchengenAirport
 def AssignGate(bcn, aircraft):
 #Buscar terminal por aerolínea
-    terminal_name = SearchTerminal(bcn, aircraft.airline_company)
+    terminal_name = SearchTerminal(bcn, aircraft.airline)
     if terminal_name == "":
         return -1
 #Encontrar terminal
     terminal = None
     i = 0
-    while i < len(bcn.terminals) and terminal is None:
-        if bcn.terminals[i].name == terminal_name:
-            terminal = bcn.terminals[i]
+    while i < len(bcn.t_list) and terminal is None:
+        if bcn.t_list[i].t_name == terminal_name:
+            terminal = bcn.t_list[i]
         i += 1
     if terminal is None:
         return -1
 #Comprobar si el vuelo es Schengen
-    schengen = IsSchengenAirport(aircraft.origin_airport)
+    schengen = IsSchengenAirport(aircraft.origin)
 #Buscar BoardingArea
     j = 0
-    while j < len(terminal.boarding_areas):
-        area = terminal.boarding_areas[j]
-        if schengen == True and area.type=="Schengen":
+    while j < len(terminal.b_list):
+        area = terminal.b_list[j]
+        if schengen == True and area.sch=="Schengen":
             # buscar gate libre
             k = 0
             while k < len(area.gates):
                 gate = area.gates[k]
-                if not gate.occupied:
-                    gate.occupied = True
-                    gate.aircraft_id = aircraft.aircraft_id
+                if not gate.occupancy:
+                    gate.occupancy = True
+                    gate.a_id = aircraft.id
                     return 0
                 k += 1
-        elif schengen==False and area.type=="non-Schengen":
+        elif schengen==False and area.sch=="non-Schengen":
             k = 0
             while k < len(area.gates):
                 gate = area.gates[k]
-                if not gate.occupied:
-                    gate.occupied = True
-                    gate.aircraft_id = aircraft.aircraft_id
+                if not gate.occupancy:
+                    gate.occupancy = True
+                    gate.a_id = aircraft.id
                     return 0
                 k += 1
         j += 1

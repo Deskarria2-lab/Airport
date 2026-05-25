@@ -2,7 +2,7 @@
 
 import tkinter as tk
 from tkinter import messagebox, filedialog
-
+import os
 from SRC.Airportsfunctions import Airport
 from SRC.Airportsfunctions.Aircraft import LoadArrivals, SaveFlights, PlotArrivals, PlotAirlines, PlotFlighType
 from SRC.Airportsfunctions.LEBL import LoadAirportStructure, AssignGate, GateOccupancy
@@ -164,7 +164,108 @@ class AirportManagerApp:
                 f"{f.id} | {f.origin} | {f.arrival_time} | {f.airline}"
             )
 
+# ================= GATES =================
 
+    def load_airport_structure(self):
+        file_path = filedialog.askopenfilename(filetypes=[("Text", "*.txt")])
+        if not file_path:
+            return
+
+        # Miramos a dónde tenemos que ir y guardamos de dónde venimos
+        file_dir = os.path.dirname(os.path.abspath(file_path))
+        cwd_original = os.getcwd()
+
+        try:
+            # Vamos a la carpeta del archivo
+            os.chdir(file_dir)
+
+            bcn = LoadAirportStructure(file_path)
+
+            if bcn == -1:
+                messagebox.showerror("Error",
+                                     "No se pudo cargar la estructura del aeropuerto. Verifica el formato del archivo.")
+            else:
+                self.bcn_airport = bcn
+                messagebox.showinfo("Éxito", "Estructura del aeropuerto cargada correctamente.")
+
+        except Exception as e:
+            messagebox.showerror("Error Crítico", f"Fallo al procesar la estructura: {str(e)}")
+
+        finally:
+            # Pase lo que pase, obligamos al sistema a volver a su directorio original
+            os.chdir(cwd_original)
+
+    def assign_gates(self):
+        if self.bcn_airport is None:
+            messagebox.showwarning("Advertencia",
+                                   "Primero debes cargar la estructura del aeropuerto (Terminales y Puertas).")
+            return
+
+        if not self.aircraft_list:
+            messagebox.showwarning("Advertencia", "No hay vuelos cargados en el sistema para asignar puertas.")
+            return
+
+        unassigned_count = 0
+        i = 0
+
+
+        while i < len(self.aircraft_list):   # Iteración sobre los vuelos
+            aircraft = self.aircraft_list[i]
+
+            result = AssignGate(self.bcn_airport, aircraft)   # Asignamos puerta. En LEBL.py, devuelve 0 si hay éxito, o un valor distinto (1, -1) si fallo.
+            if result != 0:
+                unassigned_count += 1
+
+            i += 1
+
+        if unassigned_count > 0:
+            messagebox.showwarning(
+                "Asignación Parcial",
+                f"Se han asignado puertas, pero {unassigned_count} vuelo(s) se han quedado sin asignar "
+                "(puertas llenas o aerolínea no encontrada en las terminales)."
+            )
+        else:
+            messagebox.showinfo("Éxito", "Todos los vuelos han sido asignados exitosamente a sus puertas.")
+
+    def view_gate_occupancy(self):
+        if self.bcn_airport is None:
+            messagebox.showwarning("Advertencia", "No hay ninguna estructura de aeropuerto cargada.")
+            return
+
+        occupancy_data = GateOccupancy(self.bcn_airport)
+
+        if occupancy_data == -1 or not occupancy_data:
+            messagebox.showerror("Error", "No se pudo obtener la información de ocupación del aeropuerto.")
+            return
+
+        # Creamos de una sub-ventana para no saturar la interfazs principal
+        top = tk.Toplevel(self.root)
+        top.title("Estado de Ocupación de las Puertas")
+        top.geometry("450x550")
+
+        lbl_title = tk.Label(top, text="Ocupación Actual", font=("Arial", 12, "bold"))
+        lbl_title.pack(pady=10)
+
+        listbox = tk.Listbox(top, font=("Courier", 10))
+        listbox.pack(fill=tk.BOTH, expand=True, padx=15, pady=10)
+
+        i = 0
+        while i < len(occupancy_data):
+            gate_info = occupancy_data[i]
+            gate_name = gate_info[0]
+            status = gate_info[1]
+            aircraft_id = gate_info[2]
+
+            if status == "Occupied":
+                text_line = f"[{gate_name}] OCUPADA -> Vuelo: {aircraft_id}"
+                listbox.insert(tk.END, text_line)
+                listbox.itemconfig(tk.END, {'bg': '#ffcccc'})  # Fondo rojo
+            else:
+                text_line = f"[{gate_name}] LIBRE"
+                listbox.insert(tk.END, text_line)
+                listbox.itemconfig(tk.END, {'bg': '#ccffcc'})  # Fondo verde
+
+            i += 1
 if __name__ == "__main__":
     ventana = tk.Tk()
     app = AirportManagerApp(ventana)

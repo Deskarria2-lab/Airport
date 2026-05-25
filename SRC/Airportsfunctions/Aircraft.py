@@ -24,8 +24,8 @@ def LoadArrivals(filename):
     aircraft_list = []
     while lines != "":
         aircrafts = Aircraft("None", "None", 0, "None")
-        elem = lines.strip("\t")
-        elem = elem.split(" ")
+        linea_limpia = lines.strip()
+        elem = linea_limpia.split()
         id = elem[0]
         origin = elem[1]
         arrival_time = elem[2]
