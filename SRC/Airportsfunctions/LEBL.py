@@ -154,7 +154,7 @@ def SearchTerminal (bcn, name):
     if not found:
         return ""
 
-from SRC.Airportsfunctions.Airport import IsSchengenAirport
+from SRC.Airportsfunctions.Airport import is_schengen_airport
 def AssignGate(bcn, aircraft):
 #Buscar terminal por aerolínea
     terminal_name = SearchTerminal(bcn, aircraft.airline)
@@ -170,7 +170,7 @@ def AssignGate(bcn, aircraft):
     if terminal is None:
         return -1
 #Comprobar si el vuelo es Schengen
-    schengen = IsSchengenAirport(aircraft.origin)
+    schengen = is_schengen_airport(aircraft.origin)
 #Buscar BoardingArea
     j = 0
     while j < len(terminal.b_list):

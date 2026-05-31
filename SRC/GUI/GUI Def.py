@@ -4,9 +4,10 @@
 #   "Libraries" From our project!
 ########################################
 try:
-    from SRC.Airportsfunctions import Airport
-    from SRC.Airportsfunctions.Aircraft import LoadArrivals, SaveFlights, PlotArrivals, PlotAirlines, PlotFlighType
-    from SRC.Airportsfunctions.LEBL import LoadAirportStructure, AssignGate, GateOccupancy
+    from SRC.Airportsfunctions.Airport import *
+    from SRC.Airportsfunctions.Aircraft import *
+    from SRC.Airportsfunctions.LEBL import *
+    from SRC.GUI.Gui_Functions import *
 except ImportError:
     pass                                                                    #   Stubs defined below if project not found
 ########################################
@@ -16,106 +17,6 @@ import tkinter as tk
 from tkinter import messagebox, filedialog
 import os
 ########################################
-
-                                            #   Fallback stubs (demo mode)  #
-
-try:
-    Airport
-except NameError:
-    class _AirportStub:                                                     #   Stub class mimicking Airport module
-        class Airport:
-            def __init__(self, icao, lat, lon):
-                self.icao, self.lat, self.lon, self.schengen = icao, lat, lon, False
-        @staticmethod
-        def LoadAirports(f): return []                                      #   Return empty list in demo mode
-        @staticmethod
-        def TryFormat(a): pass
-        @staticmethod
-        def AddAirport(lst, a): lst.append(a); return lst
-        @staticmethod
-        def RemoveAirport(lst, icao): return [x for x in lst if x.icao != icao]
-        @staticmethod
-        def SaveSchengenAirports(lst, f): pass
-        @staticmethod
-        def PlotAirport(lst): messagebox.showinfo("Demo", "Plot no disponible en modo demo")
-        @staticmethod
-        def MapAirport(lst): messagebox.showinfo("Demo", "Mapa no disponible en modo demo")
-    Airport = _AirportStub()
-    def LoadArrivals(f): return []
-    def SaveFlights(lst, f): pass
-    def PlotArrivals(lst): messagebox.showinfo("Demo", "Plot no disponible")
-    def PlotAirlines(lst): messagebox.showinfo("Demo", "Plot no disponible")
-    def PlotFlighType(lst): messagebox.showinfo("Demo", "Plot no disponible")
-    def LoadAirportStructure(f): return None
-    def AssignGate(ap, ac): return 0
-    def GateOccupancy(ap): return []
-
-                                            #   Color Palette (FIDS dark theme)  #
-
-C = {
-    "bg":        "#0a0e1a",                 #   Main background, night blue
-    "panel":     "#111827",                 #   Inner panels
-    "card":      "#1a2235",                 #   Cards and listboxes
-    "border":    "#1e3a5f",                 #   Steel blue borders
-    "accent":    "#f59e0b",                 #   Amber, like real FIDS boards
-    "accent2":   "#38bdf8",                 #   Sky blue for Schengen highlight
-    "text":      "#e2e8f0",                 #   Primary text
-    "text_dim":  "#64748b",                 #   Secondary / dim text
-    "green":     "#22c55e",                 #   Free gate indicator
-    "red":       "#ef4444",                 #   Occupied gate indicator
-    "btn":       "#1e3a5f",                 #   Default button background
-    "btn_hover": "#2d5a8e",                 #   Default button hover
-    "btn_acc":   "#b45309",                 #   Accent button background
-    "btn_acc_h": "#d97706",                 #   Accent button hover
-    "hdr":       "#0f172a",                 #   Header / status bar background
-}
-
-                                            #   Font Definitions  #
-
-F_TITLE  = ("Courier New", 22, "bold")     #   Main header title
-F_BODY   = ("Courier New", 10)             #   Form entries
-F_SMALL  = ("Courier New",  9)             #   General labels and buttons
-F_SEC    = ("Courier New",  8, "bold")     #   Section heading labels
-F_MONO   = ("Courier New", 10)             #   Listbox rows (monospaced)
-
-
-                                            #   FidsButton Widget Class  #
-
-class FidsButton(tk.Frame):
-                            #   Custom styled button with hover effect  #
-    def __init__(self, parent, text, command, accent=False, icon="", **kw):
-        self._bg  = C["btn_acc"]  if accent else C["btn"]                   #   Pick color based on accent flag
-        self._hov = C["btn_acc_h"] if accent else C["btn_hover"]            #   Pick hover color
-        self._cmd = command                                                  #   Store callback
-        super().__init__(parent, bg=self._bg, cursor="hand2", **kw)
-
-        inner = tk.Frame(self, bg=self._bg, padx=10, pady=5)               #   Inner padding frame
-        inner.pack(fill=tk.BOTH, expand=True)
-        self._inner = inner
-
-        label_text = f"{icon}  {text}" if icon else text                   #   Prepend icon if given
-        self._lbl = tk.Label(inner, text=label_text, bg=self._bg,
-                             fg=C["text"], font=F_SMALL,
-                             cursor="hand2", anchor=tk.W)
-        self._lbl.pack(fill=tk.X)
-
-        for w in (self, inner, self._lbl):                                  #   Bind events to all layers
-            w.bind("<Button-1>", lambda e: self._cmd())
-            w.bind("<Enter>",    self._enter)
-            w.bind("<Leave>",    self._leave)
-
-                            #   Hover enter: lighten background  #
-    def _enter(self, _):
-        for w in (self, self._inner, self._lbl):
-            w.config(bg=self._hov)
-
-                            #   Hover leave: restore background  #
-    def _leave(self, _):
-        for w in (self, self._inner, self._lbl):
-            w.config(bg=self._bg)
-
-
-                                            #   Main Application Class  #
 
 class AirportManagerApp:
                             #   Initialize window and data stores  #
@@ -145,16 +46,16 @@ class AirportManagerApp:
                                     #   Status bar at the bottom of the window  #
     def _build_status_bar(self):
         bar = tk.Frame(self.root, bg=C["hdr"])
-        bar.pack(side=tk.BOTTOM, fill=tk.X)
-        tk.Frame(bar, bg=C["border"], height=1).pack(fill=tk.X)            #   Top border line
+        bar.pack(side="bottom", fill="x")
+        tk.Frame(bar, bg=C["border"], height=1).pack(fill="x")            #   Top borderline
         row = tk.Frame(bar, bg=C["hdr"], padx=14, pady=4)
-        row.pack(fill=tk.X)
+        row.pack(fill ="x")
         self._status_lbl = tk.Label(row, text="Sistema listo.",            #   Status message label
                                     bg=C["hdr"], fg=C["text_dim"],
-                                    font=F_SMALL, anchor=tk.W)
-        self._status_lbl.pack(side=tk.LEFT)
+                                    font=F_SMALL, anchor="w")
+        self._status_lbl.pack(side="left")
         tk.Label(row, text="LEBL · BCN · 2025",                            #   Static right label
-                 bg=C["hdr"], fg=C["text_dim"], font=F_SMALL).pack(side=tk.RIGHT)
+                 bg=C["hdr"], fg=C["text_dim"], font=F_SMALL).pack(side="right")
 
                                     #   Update the status bar message  #
     def _set_status(self, msg, color=None):
@@ -164,39 +65,44 @@ class AirportManagerApp:
                                     #   Top header with logo and stat counters  #
     def _build_header(self):
         hdr = tk.Frame(self.root, bg=C["hdr"])
-        hdr.pack(side=tk.TOP, fill=tk.X)
-        tk.Frame(hdr, bg=C["accent"], height=3).pack(fill=tk.X)            #   Amber top accent line
+        hdr.pack(side="top", fill="x")
+        tk.Frame(hdr, bg=C["accent"], height=3).pack(fill="x")            #   Amber top accent line
 
         inner = tk.Frame(hdr, bg=C["hdr"], padx=20, pady=12)
-        inner.pack(fill=tk.X)
+        inner.pack(fill="x")
 
         left = tk.Frame(inner, bg=C["hdr"])                                #   Left side: logo and subtitle
-        left.pack(side=tk.LEFT)
+        left.pack(side="left")
         tk.Label(left, text="✈  LEBL", bg=C["hdr"],
-                 fg=C["accent"], font=F_TITLE).pack(side=tk.LEFT, padx=(0, 12))
-        tk.Frame(left, bg=C["border"], width=2, height=40).pack(side=tk.LEFT, padx=12)  # Vertical divider
+                 fg=C["accent"], font=F_TITLE).pack(side="left", padx=(0, 12))
+        tk.Frame(left, bg=C["border"], width=2, height=40).pack(side="left", padx=12)  # Vertical divider
         titles = tk.Frame(left, bg=C["hdr"])
-        titles.pack(side=tk.LEFT)
+        titles.pack(side="left")
         tk.Label(titles, text="AIRPORT OPERATIONS CENTER",
                  bg=C["hdr"], fg=C["text"],
-                 font=("Courier New", 13, "bold")).pack(anchor=tk.W)
+                 font=("Courier New", 13, "bold")).pack(anchor="w")
         tk.Label(titles, text="Barcelona · El Prat  |  Sistema de Gestión v4",
-                 bg=C["hdr"], fg=C["text_dim"], font=F_SMALL).pack(anchor=tk.W)
+                 bg=C["hdr"], fg=C["text_dim"], font=F_SMALL).pack(anchor="w")
 
         right = tk.Frame(inner, bg=C["hdr"])                               #   Right side: live stat boxes
-        right.pack(side=tk.RIGHT)
+        right.pack(side="right")
         self._stat_airports = self._mini_stat(right, "AEROPUERTOS", "0")
         self._stat_flights   = self._mini_stat(right, "VUELOS",       "0")
         self._stat_gates     = self._mini_stat(right, "ESTRUCTURA",   "—")
 
-        tk.Frame(hdr, bg=C["border"], height=1).pack(fill=tk.X)            #   Bottom border line
+        tk.Frame(hdr, bg=C["border"], height=1).pack(fill="x")            #   Bottom borderline
 
                                     #   Create a small stat counter box  #
+
     def _mini_stat(self, parent, label, value):
         f = tk.Frame(parent, bg=C["card"], padx=14, pady=8)
-        f.pack(side=tk.LEFT, padx=6)
-        val = tk.Label(f, text=value, bg=C["card"],                        #   Large number label
-                       fg=C["accent"], font=("Courier New", 18, "bold"))
+        f.pack(side="left", padx=6)
+        val = tk.Label(
+            f,
+            text=value,
+            bg=C["card"],                        #   Large number label
+            fg=C["accent"],
+            font=("Courier New", 18, "bold"))
         val.pack()
         tk.Label(f, text=label, bg=C["card"],                              #   Small description label
                  fg=C["text_dim"], font=F_SMALL).pack()
@@ -205,18 +111,19 @@ class AirportManagerApp:
                                     #   Tab bar and content area  #
     def _build_tabs(self):
         tab_bar = tk.Frame(self.root, bg=C["panel"])                       #   Tab button row
-        tab_bar.pack(side=tk.TOP, fill=tk.X)
-        tk.Frame(tab_bar, bg=C["border"], height=1).pack(fill=tk.X)
+        tab_bar.pack(side="top", fill="x")
+        tk.Frame(tab_bar, bg=C["border"], height=1).pack(fill="x")
         btn_row = tk.Frame(tab_bar, bg=C["panel"])
-        btn_row.pack(anchor=tk.W, padx=10, pady=6)
+        btn_row.pack(anchor="w", padx=10, pady=6)
 
         self._content = tk.Frame(self.root, bg=C["bg"])                    #   Shared content frame for all tabs
-        self._content.pack(side=tk.TOP, fill=tk.BOTH, expand=True, padx=10)
+        self._content.pack(side="top", fill="both", expand=True, padx=10)
 
         tab_defs = [                                                        #   Tab definitions: name + builder
             ("🗺  AEROPUERTOS", self._build_airports_tab),
             ("✈  VUELOS",       self._build_flights_tab),
             ("🚪  PUERTAS",     self._build_gates_tab),
+            ("💻  EXAMEN", self._build_gates_tab),
         ]
 
         self._tab_buttons = []                                              #   Store tab button refs
@@ -232,7 +139,7 @@ class AirportManagerApp:
             btn = tk.Label(btn_row, text=name,
                            bg=C["panel"], fg=C["text_dim"],
                            font=F_SMALL, padx=18, pady=6, cursor="hand2")
-            btn.pack(side=tk.LEFT, padx=2)
+            btn.pack(side="left", padx=2)
             btn.bind("<Button-1>", lambda e, idx=i: self._switch_tab(idx)) #   Bind click to switch
             self._tab_buttons.append(btn)
             i += 1
@@ -261,10 +168,10 @@ class AirportManagerApp:
                                     #   Build the Airports management tab  #
     def _build_airports_tab(self, parent):
         row = tk.Frame(parent, bg=C["bg"])                                  #   Horizontal split container
-        row.pack(fill=tk.BOTH, expand=True, pady=8)
+        row.pack(fill="both", expand=True, pady=8)
 
         left = tk.Frame(row, bg=C["panel"], padx=16, pady=14, width=190)   #   Left panel: form and buttons
-        left.pack(side=tk.LEFT, fill=tk.Y, padx=(0, 8))
+        left.pack(side="left", fill="y", padx=(0, 8))
         left.pack_propagate(False)
 
         self._sec(left, "AÑADIR / ELIMINAR")
@@ -272,50 +179,50 @@ class AirportManagerApp:
                            ("Latitud",     "entry_lat"),
                            ("Longitud",    "entry_lon")]:
             tk.Label(left, text=lbl, bg=C["panel"],
-                     fg=C["text_dim"], font=F_SMALL).pack(anchor=tk.W, pady=(7, 1))
+                     fg=C["text_dim"], font=F_SMALL).pack(anchor="w", pady=(7, 1))
             e = tk.Entry(left, bg=C["card"], fg=C["text"],
                          insertbackground=C["accent"],
-                         relief=tk.FLAT, font=F_BODY, width=18)
-            e.pack(fill=tk.X, ipady=5)
+                         relief="flat", font=F_BODY, width=18)
+            e.pack(fill="x", ipady=5)
             setattr(self, attr, e)                                          #   Assign entry as instance attribute
 
         self._div(left)
-        FidsButton(left, "Añadir Aeropuerto",   self.add_airport,    icon="➕").pack(fill=tk.X, pady=2)
-        FidsButton(left, "Eliminar Aeropuerto", self.delete_airport, icon="🗑").pack(fill=tk.X, pady=2)
+        FidsButton(left, "Añadir Aeropuerto",   self.add_airport,    icon="➕").pack(fill="x", pady=2)
+        FidsButton(left, "Eliminar Aeropuerto", self.delete_airport, icon="🗑").pack(fill="x", pady=2)
         self._div(left)
         self._sec(left, "ARCHIVOS")
-        FidsButton(left, "Cargar Aeropuertos",  self.load_airports,  icon="📂").pack(fill=tk.X, pady=2)
-        FidsButton(left, "Guardar Schengen",    self.save_airports,  icon="💾").pack(fill=tk.X, pady=2)
+        FidsButton(left, "Cargar Aeropuertos",  self.load_airports,  icon="📂").pack(fill="x", pady=2)
+        FidsButton(left, "Guardar Schengen",    self.save_airports,  icon="💾").pack(fill="x", pady=2)
         self._div(left)
         self._sec(left, "VISUALIZACIÓN")
-        FidsButton(left, "Plot Aeropuertos",    self.plot_airports,  icon="📊").pack(fill=tk.X, pady=2)
-        FidsButton(left, "Mapa KML",            self.map_airports,   icon="🗺", accent=True).pack(fill=tk.X, pady=2)
+        FidsButton(left, "Plot Aeropuertos",    self.plot_airports,  icon="📊").pack(fill="x", pady=2)
+        FidsButton(left, "Mapa KML",            self.map_airports,   icon="🗺", accent=True).pack(fill="x", pady=2)
 
         right = tk.Frame(row, bg=C["panel"], padx=12, pady=12)             #   Right panel: airport list
-        right.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        right.pack(side="left", fill="both", expand=True)
 
         self._sec(right, "AEROPUERTOS CARGADOS")
 
         hdr = tk.Frame(right, bg=C["border"])                              #   Column header bar
-        hdr.pack(fill=tk.X, pady=(6, 0))
+        hdr.pack(fill="x", pady=(6, 0))
         for col, w in [("ICAO", 8), ("LATITUD", 12), ("LONGITUD", 12), ("SCHENGEN", 10)]:
             tk.Label(hdr, text=col, bg=C["border"], fg=C["accent"],
-                     font=("Courier New", 9, "bold"), width=w, pady=4).pack(side=tk.LEFT)
+                     font=("Courier New", 9, "bold"), width=w, pady=4).pack(side="left")
 
         lf = tk.Frame(right, bg=C["card"])                                 #   Listbox container frame
-        lf.pack(fill=tk.BOTH, expand=True, pady=(2, 0))
+        lf.pack(fill="both", expand=True, pady=(2, 0))
 
-        sb = tk.Scrollbar(lf, orient=tk.VERTICAL,
+        sb = tk.Scrollbar(lf, orient="vertical",
                           troughcolor=C["card"], bg=C["border"])
-        sb.pack(side=tk.RIGHT, fill=tk.Y)
+        sb.pack(side="right", fill="y")
 
         self.listbox_airports = tk.Listbox(
             lf, bg=C["card"], fg=C["text"],
             selectbackground=C["accent"], selectforeground=C["bg"],
-            relief=tk.FLAT, font=F_MONO,
+            relief="flat", font=F_MONO,
             highlightthickness=0, activestyle="none",
             borderwidth=0, yscrollcommand=sb.set)
-        self.listbox_airports.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.listbox_airports.pack(side="left", fill="both", expand=True)
         sb.config(command=self.listbox_airports.yview)
 
     ########################################
@@ -325,46 +232,46 @@ class AirportManagerApp:
                                     #   Build the Flights management tab  #
     def _build_flights_tab(self, parent):
         row = tk.Frame(parent, bg=C["bg"])                                  #   Horizontal split container
-        row.pack(fill=tk.BOTH, expand=True, pady=8)
+        row.pack(fill="both", expand=True, pady=8)
 
         left = tk.Frame(row, bg=C["panel"], padx=16, pady=14, width=190)   #   Left panel: buttons
-        left.pack(side=tk.LEFT, fill=tk.Y, padx=(0, 8))
+        left.pack(side="left", fill="y", padx=(0, 8))
         left.pack_propagate(False)
 
         self._sec(left, "ARCHIVOS")
-        FidsButton(left, "Cargar Vuelos",  self.load_flights,    icon="📂").pack(fill=tk.X, pady=2)
-        FidsButton(left, "Guardar Vuelos", self.save_flights,    icon="💾").pack(fill=tk.X, pady=2)
+        FidsButton(left, "Cargar Vuelos",  self.load_flights,    icon="📂").pack(fill="x", pady=2)
+        FidsButton(left, "Guardar Vuelos", self.save_flights,    icon="💾").pack(fill="x", pady=2)
         self._div(left)
         self._sec(left, "ANÁLISIS")
-        FidsButton(left, "Llegadas por hora",   self.plot_arrivals,    icon="📈").pack(fill=tk.X, pady=2)
-        FidsButton(left, "Por aerolínea",        self.plot_airlines,    icon="🏷").pack(fill=tk.X, pady=2)
-        FidsButton(left, "Schengen vs No",       self.plot_flight_type, icon="🌍", accent=True).pack(fill=tk.X, pady=2)
+        FidsButton(left, "Llegadas por hora",   self.plot_arrivals,    icon="📈").pack(fill="x", pady=2)
+        FidsButton(left, "Por aerolínea",        self.plot_airlines,    icon="🏷").pack(fill="x", pady=2)
+        FidsButton(left, "Schengen vs No",       self.plot_flight_type, icon="🌍", accent=True).pack(fill="x", pady=2)
 
         right = tk.Frame(row, bg=C["panel"], padx=12, pady=12)             #   Right panel: FIDS flight table
-        right.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        right.pack(side="left", fill="both", expand=True)
 
         self._sec(right, "TABLA DE VUELOS (FIDS)")
 
         hdr = tk.Frame(right, bg=C["accent"])                              #   Amber column header bar
-        hdr.pack(fill=tk.X, pady=(6, 0))
+        hdr.pack(fill="x", pady=(6, 0))
         for col, w in [("VUELO", 10), ("ORIGEN", 10), ("HORA", 8), ("AEROLÍNEA", 16)]:
             tk.Label(hdr, text=col, bg=C["accent"], fg=C["bg"],
-                     font=("Courier New", 9, "bold"), width=w, pady=5).pack(side=tk.LEFT)
+                     font=("Courier New", 9, "bold"), width=w, pady=5).pack(side="left")
 
         lf = tk.Frame(right, bg=C["card"])                                 #   Listbox container frame
-        lf.pack(fill=tk.BOTH, expand=True, pady=(2, 0))
+        lf.pack(fill="both", expand=True, pady=(2, 0))
 
-        sb = tk.Scrollbar(lf, orient=tk.VERTICAL,
+        sb = tk.Scrollbar(lf, orient="vertical",
                           troughcolor=C["card"], bg=C["border"])
-        sb.pack(side=tk.RIGHT, fill=tk.Y)
+        sb.pack(side="right", fill="y")
 
         self.listbox_flights = tk.Listbox(
             lf, bg=C["card"], fg=C["text"],
             selectbackground=C["accent2"], selectforeground=C["bg"],
-            relief=tk.FLAT, font=F_MONO,
+            relief="flat", font=F_MONO,
             highlightthickness=0, activestyle="none",
             borderwidth=0, yscrollcommand=sb.set)
-        self.listbox_flights.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.listbox_flights.pack(side="left", fill="both", expand=True)
         sb.config(command=self.listbox_flights.yview)
 
     ########################################
@@ -374,65 +281,77 @@ class AirportManagerApp:
                                     #   Build the Gate management tab  #
     def _build_gates_tab(self, parent):
         row = tk.Frame(parent, bg=C["bg"])                                  #   Horizontal split container
-        row.pack(fill=tk.BOTH, expand=True, pady=8)
+        row.pack(fill="both", expand=True, pady=8)
 
         left = tk.Frame(row, bg=C["panel"], padx=16, pady=14, width=190)   #   Left panel: buttons and legend
-        left.pack(side=tk.LEFT, fill=tk.Y, padx=(0, 8))
+        left.pack(side="left", fill="y", padx=(0, 8))
         left.pack_propagate(False)
 
         self._sec(left, "OPERACIONES")
-        FidsButton(left, "Cargar Estructura", self.load_airport_structure, icon="🏗").pack(fill=tk.X, pady=2)
-        FidsButton(left, "Asignar Puertas",   self.assign_gates,           icon="🔀").pack(fill=tk.X, pady=2)
-        FidsButton(left, "Ver Ocupación",     self.view_gate_occupancy,    icon="👁", accent=True).pack(fill=tk.X, pady=2)
+        FidsButton(left, "Cargar Estructura", self.load_airport_structure, icon="🏗").pack(fill="x", pady=2)
+        FidsButton(left, "Asignar Puertas",   self.assign_gates,           icon="🔀").pack(fill="x", pady=2)
+        FidsButton(left, "Ver Ocupación",     self.view_gate_occupancy,    icon="👁", accent=True).pack(fill="x", pady=2)
         self._div(left)
         self._sec(left, "LEYENDA")
         for color, label in [(C["green"], "Puerta LIBRE"),                 #   Color legend entries
                              (C["red"],   "Puerta OCUPADA")]:
             leg = tk.Frame(left, bg=C["panel"])
-            leg.pack(fill=tk.X, pady=3)
-            tk.Frame(leg, bg=color, width=12, height=12).pack(side=tk.LEFT, padx=(0, 8))
+            leg.pack(fill="x", pady=3)
+            tk.Frame(leg, bg=color, width=12, height=12).pack(side="left", padx=(0, 8))
             tk.Label(leg, text=label, bg=C["panel"],
-                     fg=C["text"], font=F_SMALL).pack(side=tk.LEFT)
+                     fg=C["text"], font=F_SMALL).pack(side="left")
 
         right = tk.Frame(row, bg=C["panel"], padx=12, pady=12)             #   Right panel: gate status list
-        right.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        right.pack(side="left", fill="both", expand=True)
 
         self._sec(right, "ESTADO DE PUERTAS")
         tk.Label(right,
                  text="Carga la estructura y pulsa 'Ver Ocupación' para ver el estado de las puertas.",
                  bg=C["panel"], fg=C["text_dim"], font=F_SMALL,
-                 wraplength=480, justify=tk.LEFT).pack(anchor=tk.W, pady=(4, 6))
+                 wraplength=480, justify="left").pack(anchor="w", pady=(4, 6))
 
         lf = tk.Frame(right, bg=C["card"])                                 #   Listbox container frame
-        lf.pack(fill=tk.BOTH, expand=True)
+        lf.pack(fill="both", expand=True)
 
-        sb = tk.Scrollbar(lf, orient=tk.VERTICAL,
+        sb = tk.Scrollbar(lf, orient="vertical",
                           troughcolor=C["card"], bg=C["border"])
-        sb.pack(side=tk.RIGHT, fill=tk.Y)
+        sb.pack(side="right", fill="y")
 
         self.listbox_gates = tk.Listbox(
             lf, bg=C["card"], fg=C["text"],
             selectbackground=C["border"],
-            relief=tk.FLAT, font=F_MONO,
+            relief="flat", font=F_MONO,
             highlightthickness=0, activestyle="none",
             borderwidth=0, yscrollcommand=sb.set)
-        self.listbox_gates.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.listbox_gates.pack(side="left", fill="both", expand=True)
         sb.config(command=self.listbox_gates.yview)
+
+    def _build_exam_tab(self, parent):
+        row = tk.Frame(parent, bg=C["bg"])  # Horizontal split container
+        row.pack(fill="both", expand=True, pady=8)
+
+        left = tk.Frame(row, bg=C["panel"], padx=16, pady=14, width=190)  # Left panel: buttons and legend
+        left.pack(side="left", fill="y", padx=(0, 8))
+        left.pack_propagate(False)
 
     ########################################
     #   UI Helper Methods
     ########################################
 
                             #   Section heading label in amber  #
-    def _sec(self, parent, text):
+
+    @staticmethod
+    def _sec(parent, text):
         tk.Label(parent, text=text, bg=parent.cget("bg"),
-                 fg=C["accent"], font=F_SEC).pack(anchor=tk.W, pady=(6, 2))
+                 fg=C["accent"], font=F_SEC).pack(anchor="w", pady=(6, 2))
 
                             #   Horizontal divider line  #
-    def _div(self, parent):
-        tk.Frame(parent, bg=C["border"], height=1).pack(fill=tk.X, pady=8)
 
-                            #   Refresh the three stat counter boxes  #
+    @staticmethod
+    def _div(parent):
+        tk.Frame(parent, bg=C["border"], height=1).pack(fill="x", pady=8)
+
+                                     #   Refresh the three stat counter boxes  #
     def _update_stats(self):
         self._stat_airports.config(text=str(len(self.airports_list)))
         self._stat_flights.config(text=str(len(self.aircraft_list)))
@@ -446,20 +365,20 @@ class AirportManagerApp:
                                 #   Load airports from a txt file  #
     def load_airports(self):
         file = filedialog.askopenfilename(filetypes=[("Text", "*.txt")])
-        if not file:                                                        #   User cancelled the dialog
+        if not file:                                                        #   User canceled the dialog
             return
-        self.airports_list = Airport.LoadAirports(file)                    #   Load via Airport module
+        self.airports_list = load_airports(file)                    #   Load via Airport module
         self.update_airports()
         self._set_status(f"Aeropuertos cargados: {len(self.airports_list)}", C["green"])
 
                                 #   Add a new airport from form fields  #
     def add_airport(self):
         try:
-            ap = Airport.Airport(self.entry_icao.get(),                    #   Create Airport object from entries
+            ap = Airport(self.entry_icao.get(),                    #   Create Airport object from entries
                                   self.entry_lat.get(),
                                   self.entry_lon.get())
-            Airport.TryFormat(ap)                                          #   Validate and format the object
-            self.airports_list = Airport.AddAirport(self.airports_list, ap)
+            TryFormat(ap)                                          #   Validate and format the object
+            self.airports_list = add_airport(self.airports_list, ap)
             self.update_airports()
             self._set_status(f"Aeropuerto {ap.icao} añadido.", C["green"])
         except Exception as e:
@@ -468,7 +387,7 @@ class AirportManagerApp:
                                 #   Remove an airport by ICAO from the list  #
     def delete_airport(self):
         icao = self.entry_icao.get()                                        #   Read ICAO field
-        self.airports_list = Airport.RemoveAirport(self.airports_list, icao)
+        self.airports_list = remove_airport(self.airports_list, icao)
         self.update_airports()
         self._set_status(f"Aeropuerto {icao} eliminado.", C["accent"])
 
@@ -476,16 +395,16 @@ class AirportManagerApp:
     def save_airports(self):
         file = filedialog.asksaveasfilename(defaultextension=".txt")
         if file:
-            Airport.SaveSchengenAirports(self.airports_list, file)
+            save_schengen_airports(self.airports_list, file)
             self._set_status(f"Guardado en {os.path.basename(file)}", C["green"])
 
                                 #   Show airport bar chart  #
     def plot_airports(self):
-        Airport.PlotAirport(self.airports_list)
+        plot_airport(self.airports_list)
 
                                 #   Generate KML map file  #
     def map_airports(self):
-        Airport.MapAirport(self.airports_list)
+        map_airport(self.airports_list)
 
                                 #   Refresh the airports listbox  #
     def update_airports(self):
@@ -508,7 +427,7 @@ class AirportManagerApp:
                                 #   Load flights from a txt file  #
     def load_flights(self):
         file = filedialog.askopenfilename(filetypes=[("Text", "*.txt")])
-        if not file:                                                        #   User cancelled the dialog
+        if not file:                                                        #   User canceled the dialog
             return
         self.aircraft_list = LoadArrivals(file)                            #   Load via Aircraft module
         self.update_flights()
@@ -562,7 +481,7 @@ class AirportManagerApp:
                                 #   Load airport terminal structure from file  #
     def load_airport_structure(self):
         file_path = filedialog.askopenfilename(filetypes=[("Text", "*.txt")])
-        if not file_path:                                                   #   User cancelled the dialog
+        if not file_path:                                                   #   User canceled the dialog
             return
         file_dir     = os.path.dirname(os.path.abspath(file_path))
         cwd_original = os.getcwd()                                         #   Save original working directory

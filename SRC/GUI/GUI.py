@@ -94,7 +94,7 @@ class AirportManagerApp:
     def load_airports(self):
         file = filedialog.askopenfilename(filetypes=[("Text", "*.txt")])
         if not file: return
-        self.airports_list = Airport.LoadAirports(file)
+        self.airports_list = Airport.load_airports(file)
         self.update_airports()
 
     def add_airport(self):
@@ -105,26 +105,26 @@ class AirportManagerApp:
                 self.entry_lon.get()
             )
             Airport.TryFormat(ap)
-            self.airports_list = Airport.AddAirport(self.airports_list, ap)
+            self.airports_list = Airport.add_airport(self.airports_list, ap)
             self.update_airports()
         except Exception as e:
             messagebox.showerror("Error", str(e))
 
     def delete_airport(self):
         icao = self.entry_icao.get()
-        self.airports_list = Airport.RemoveAirport(self.airports_list, icao)
+        self.airports_list = Airport.remove_airport(self.airports_list, icao)
         self.update_airports()
 
     def save_airports(self):
         file = filedialog.asksaveasfilename(defaultextension=".txt")
         if file:
-            Airport.SaveSchengenAirports(self.airports_list, file)
+            Airport.save_schengen_airports(self.airports_list, file)
 
     def plot_airports(self):
-        Airport.PlotAirport(self.airports_list)
+        Airport.plot_airport(self.airports_list)
 
     def map_airports(self):
-        Airport.MapAirport(self.airports_list)
+        Airport.map_airport(self.airports_list)
 
     def update_airports(self):
         self.listbox_airports.delete(0, tk.END)

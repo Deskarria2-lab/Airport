@@ -22,7 +22,7 @@ class Airport:
                                             #   Format checker  #
 
                             #   Function to check if the airport it's schengen  #
-def IsSchengenAirport(icao):
+def is_schengen_airport(icao):
     icao = icao[:2].upper()                                                     # Select first 2 letters and put it on Mayusc
     i = 0                                                                       # Counter
     found = False
@@ -38,18 +38,18 @@ def IsSchengenAirport(icao):
         return False                                                      #   If not, return False
 
                             #   Function to set an airport sch atr True  #
-def SetSchengen(airport):
-    airport.schengen = IsSchengenAirport(airport.icao)                      #   Change the sch atr of the airport obj
+def set_schengen(airport):
+    airport.schengen = is_schengen_airport(airport.icao)                      #   Change the sch atr of the airport obj
 
                                     #   Print Airports on screen  #
-def PrintAirport(airport):
+def print_airport(airport):
     print("ICAO: " + airport.icao,                                          #   Print all airport data's
           "Schengen: " + str(airport.schengen),
           "Coordenadas: " + str(airport.lat),
           " , " + str(airport.lon))
 
                             #   Load Airports from txt file (V0.0)  #
-def LoadAirports(filename):   #PARA REVISAR!!!! BASTANTE POCHO!!!!
+def load_airports(filename):   #PARA REVISAR!!!! BASTANTE POCHO!!!!
     file = open(filename, "r")                                              #   Load the txt airport file
     next(file)                                                              #   Ignore the first line
     lines = file.readline()                                                 #   Defines the var lines
@@ -77,11 +77,11 @@ def LoadAirports(filename):   #PARA REVISAR!!!! BASTANTE POCHO!!!!
     return airports                                                      #   Return's a vect airports with all data
 
                                 #   Save sch airports in txt file!  #
-def SaveSchengenAirports(airports, filename):
+def save_schengen_airports(airports, filename):
     file = open(filename, "w")                                              #   Write in the txt specific file
     i = 0                                                                   #   Counter
     while i < len(airports):                                                #   While the count is < len of airport list
-        if IsSchengenAirport(str(airports[i])):                                  #   Cheks if a specific airport is sch
+        if is_schengen_airport(str(airports[i])):                                  #   Cheks if a specific airport is sch
             line = (airports[i].icao + "\t"                                 #   Creates the var line to write in file!
                     + str(airports[i].lat) + "\t"
                     + str(airports[i].lon) + "\n")
@@ -94,7 +94,7 @@ def SaveSchengenAirports(airports, filename):
     return airports
 
                                 #   Add an Airport to the airports list  #
-def AddAirport(airports, airport):
+def add_airport(airports, airport):
     find = False                                                            #   Set a find variable in false
     i = 0                                                                   #   Counter to 0
     TryFormat(airport)
@@ -110,7 +110,7 @@ def AddAirport(airports, airport):
     return airports
 
                                 #   Remove an Airport from the airports list  #
-def RemoveAirport(airports, icao):
+def remove_airport(airports, icao):
     i = 0                                                                   #   Counter to 0
     while i < len(airports):                                                #   While not len
         if icao == str(airports[i].icao):                                     #   If Icao code is in the list
@@ -122,12 +122,12 @@ def RemoveAirport(airports, icao):
     return airports
 
                                 #   Change!!!!!
-def PlotAirport(airports):
+def plot_airport(airports):
     sch_list = 0
     n_sch_list = 0
     i = 0
     while i < len(airports):
-        if IsSchengenAirport(str(airports[i].icao)):
+        if is_schengen_airport(str(airports[i].icao)):
             sch_list += 1
         else:
             n_sch_list += 1
@@ -139,12 +139,12 @@ def PlotAirport(airports):
     # plt.ylabel("Airports")
     plt.show()
 
-def MapAirport(airports):
+def map_airport(airports):
     kml = simplekml.Kml()
     i = 0
     while i < len(airports):
         pnt = kml.newpoint(name=str(airports[i].icao), coords=[(airports[i].lon, airports[i].lat)])
-        if IsSchengenAirport(str(airports[i].icao)):
+        if is_schengen_airport(str(airports[i].icao)):
             pnt.style.labelstyle.color = simplekml.Color.green
             # pnt.style.iconstyle.icon.href = "schengen-Photoroom.png"          PARA FUTURO
         else:

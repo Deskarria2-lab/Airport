@@ -2,7 +2,7 @@
 
 #   "Libraries" From our project!
 ########################################
-from SRC.Airportsfunctions.Airport import IsSchengenAirport
+from SRC.Airportsfunctions.Airport import is_schengen_airport
 ########################################
 #   External Libraries!
 ########################################
@@ -115,7 +115,7 @@ def PlotFlighType (aircraft_list):
     flights_nsch = 0
 
     for avion in aircraft_list:
-        if IsSchengenAirport (avion.origin):
+        if is_schengen_airport (avion.origin):
             flights_sch += 1
         else:
             flights_nsch += 1
@@ -153,7 +153,7 @@ def MapFlights (aircraft_list):                         #REVISAR
                 orig_lat = aircraft_list[origen].lat
                 orig_lon = aircraft_list[origen].lon
 
-                if IsSchengenAirport (origen):
+                if is_schengen_airport (origen):
                     estilo = "estilo_schengen"
                 else:
                     estilo = "estilo_no_schengen"
