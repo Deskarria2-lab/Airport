@@ -16,6 +16,10 @@ class Aircraft:
         self.airline = airline
         self.origin = origin
         self.arrival_time = arrival_time
+        #CAMBIOS PARA V.4
+        self.destination = destination
+        self.departure_time = departure_time
+        ####################################
 
 def LoadArrivals(filename):
     file = open(filename, "r")  # Load the txt airport file
@@ -194,6 +198,116 @@ def LongDistanceArrivals (aircraft_list):                   #REHACER
             l_flights.append(aircraft)
         return l_flights
     return None
+
+#FUNCIONES V.4
+def LoadDepartures(filename):
+    aircraft_list = []
+    try:
+        with open(filename, "r") as f:
+            f.readline()  #Ignoramos la primera linea
+            linea = f.readline() #Leemos la primera linea
+
+            while linea != "":
+                linea_limpia = linea.strip()
+                if linea_limpia != "":
+                    partes = linea_limpia.split()
+                    if len(partes) == 4:
+                        new_aircraft = Aircraft(
+                            id = partes[0],
+                            airline = partes[3],
+                            origin = "",
+                            arrival_time = "",
+                            destination = partes[1],
+                            departure_time = partes[2]
+                        )
+                        aircraft_list.append(new_aircraft)
+
+                        linea = f.readline()
+        return aircraft_list
+    except FileNotFoundError:
+        print(f"Error: el archivo {filename} no existe.")
+        return []
+
+def time_to_mins(time_str):                        #Funcion para evitar problemas al comparar horas de salida/llegada en la funcion MergeMovements
+    if time_str == "" or time_str == "None":
+        return 0
+    parts = time_str.split(":")
+    return int(parts[0]) * 60 + int(parts[1])
+
+def MergeMovements(arrivals, departures):
+    #Control de seguridad
+    if len(arrivals) == 0 or len(departures) == 0:
+        return -1
+
+    merged_list = []
+
+    #Control de salidas ya asignadas para evitar duplicados
+    dep_used = []
+    i = 0
+    while i < len(departures):
+        dep_used.append(False)
+        i += 1
+
+    #Bucle principal: Emparejar llegadas con salidas
+    i = 0
+    while i < len(arrivals):
+        arr = arrivals[i]
+        arr_mins = time_to_mins(arr.arrival_time)
+
+        j = 0
+        merged = False
+        while j < len(departures):
+            dep = departures[j]
+            #Comprobar condiciones de emparejamiento
+            if dep.id == arr.id and not dep_used[j]:
+                dep_mins = time_to_mins(dep.departure_time)
+
+                if arr_mins < dep_mins:
+                    #Fusión: Creamos un nuevo objeto con los datos combinados
+                    merged_aircraft = Aircraft(
+                        id=arr.id,
+                        airline=arr.airline,
+                        origin=arr.origin,
+                        arrival_time=arr.arrival_time,
+                        destination=dep.destination,
+                        departure_time=dep.departure_time
+                    )
+                    merged_list.append(merged_aircraft)
+                    dep_used[j] = True
+                    merged = True
+                    break  #Salimos del bucle interno, ya encontramos su par
+            j += 1
+
+        #Si terminamos de buscar y no se fusionó, se queda a dormir (solo llegada)
+        if not merged:
+            merged_list.append(arr)
+
+        i += 1
+
+    #Recolectar las salidas que pasaron la noche en el aeropuerto (solo salida)
+    j = 0
+    while j < len(departures):
+        if not dep_used[j]:
+            merged_list.append(departures[j])
+        j += 1
+
+    return merged_list
+
+def NightAircraft(aircrafts):
+    if len(aircrafts) == 0:
+        return -1
+
+    night_list = []
+    i = 0
+    while i < len(aircrafts):
+        ac = aircrafts[i]
+        #Comprobamos aviones sin llegada, pero con salida
+        if (ac.arrival_time == "" or ac.arrival_time == "None") and ac.departure_time != "":
+            night_list.append(ac)
+        i += 1
+
+    return night_list
+#####################
 
 if __name__ == "__main__":
     # airport_list = LoadAirports('../Files/Airports.txt')

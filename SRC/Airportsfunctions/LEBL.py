@@ -169,14 +169,20 @@ def AssignGate(bcn, aircraft):
         i += 1
     if terminal is None:
         return -1
-#Comprobar si el vuelo es Schengen
-    schengen = is_schengen_airport(aircraft.origin)
+
+#Determinar el ICAO a evaluar (origen si llega, destino si es vuelo nocturno de salida)
+    icao_to_check = aircraft.origin
+    if icao_to_check == "" or icao_to_check == "None":
+        icao_to_check = aircraft.destination
+#Comprobar si el vuelo es schengen
+    schengen = is_schengen_airport(icao_to_check)
+
 #Buscar BoardingArea
     j = 0
     while j < len(terminal.b_list):
         area = terminal.b_list[j]
         if schengen == True and area.sch=="Schengen":
-            # buscar gate libre
+            #Buscar la puerta libre
             k = 0
             while k < len(area.gates):
                 gate = area.gates[k]
@@ -195,4 +201,41 @@ def AssignGate(bcn, aircraft):
                     return 0
                 k += 1
         j += 1
+    return -1
+
+def AssignNightGates(bcn, aircrafts):
+    if len(aircrafts) == 0:
+        return -1
+
+    i = 0
+    while i < len(aircrafts):
+        ac = aircrafts[i]
+        #Asegurar que no tiene llegada y sí tiene salida
+        if (ac.arrival_time == "" or ac.arrival_time == "None") and ac.departure_time != "":
+            AssignGate(bcn, ac) #Asignamos la puerta
+
+        i += 1
+
+    return 0
+
+def FreeGates(bcn, id):
+    i = 0
+    while i < len(bcn.t_list):                                 #Iteramos sobre las terminales
+        terminal = bcn.t_list[i]
+
+        j = 0
+        while j < len(terminal.b_list):                        #Iteramos sobre las areas de embarque
+            area = terminal.b_list[j]
+
+            k = 0
+            while k < len(area.gates):                         #Iteramos sobre las puertas
+                gate = area.gates[k]
+
+                if gate.occupancy == True and gate.a_id == id: #Si la puerta esta ocupada y coincide el ID
+                    gate.occupancy = False                     #Liberamos la puerta
+                    gate.a_id = None
+                    return 0
+                k += 1
+            j += 1
+        i += 1
     return -1
