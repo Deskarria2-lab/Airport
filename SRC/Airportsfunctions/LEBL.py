@@ -239,3 +239,103 @@ def FreeGates(bcn, id):
             j += 1
         i += 1
     return -1
+
+def AssignGatesAtTime(bcn, aircrafts, time):
+    # Convertir la hora recibida a minutos
+    parts = time.split(":")
+    time_mins = int(parts[0]) * 60 + int(parts[1])
+    end_mins = time_mins + 60
+
+    # 1. Liberar puertas de aviones que ya han salido antes de la hora recibida
+    i = 0
+    while i < len(aircrafts):
+        ac = aircrafts[i]
+        if ac.departure_time != "" and ac.departure_time != "None":
+            dep_parts = ac.departure_time.split(":")
+            dep_mins = int(dep_parts[0]) * 60 + int(dep_parts[1])
+            if dep_mins <= time_mins:
+                FreeGates(bcn, ac.id)
+        i += 1
+
+    # 2. Asignar puertas a los aviones que aterrizan en la franja [time_mins, end_mins)
+    not_assigned = 0
+    i = 0
+    while i < len(aircrafts):
+        ac = aircrafts[i]
+        if ac.arrival_time != "" and ac.arrival_time != "None":
+            arr_parts = ac.arrival_time.split(":")
+            arr_mins = int(arr_parts[0]) * 60 + int(arr_parts[1])
+            if time_mins <= arr_mins < end_mins:
+                if AssignGate(bcn, ac) != 0:
+                    not_assigned += 1
+        i += 1
+
+    return not_assigned
+
+def PlotDayOccupancy(bcn, aircrafts):
+    # Contar terminales
+    num_terminals = len(bcn.t_list)
+
+    # Para cada hora, guardar [gates_T1, gates_T2, ..., not_assigned]
+    hours_data = []
+    hour = 0
+    while hour < 24:
+        # Construir la hora como string "HH:00"
+        if hour < 10:
+            time_str = "0" + str(hour) + ":00"
+        else:
+            time_str = str(hour) + ":00"
+
+        not_assigned = AssignGatesAtTime(bcn, aircrafts, time_str)
+
+        # Contar puertas ocupadas por terminal
+        t_counts = []
+        t = 0
+        while t < num_terminals:
+            terminal = bcn.t_list[t]
+            count = 0
+            b = 0
+            while b < len(terminal.b_list):
+                area = terminal.b_list[b]
+                k = 0
+                while k < len(area.gates):
+                    if area.gates[k].occupancy:
+                        count += 1
+                    k += 1
+                b += 1
+            t_counts.append(count)
+            t += 1
+
+        hours_data.append([t_counts, not_assigned])
+        hour += 1
+
+    # Dibujar el gráfico
+    horas = list(range(24))
+    colors = ["blue", "orange", "green", "red"]
+
+    t = 0
+    while t < num_terminals:
+        values = []
+        h = 0
+        while h < 24:
+            values.append(hours_data[h][0][t])
+            h += 1
+        plt.bar(horas, values, label=bcn.t_list[t].t_name,
+                color=colors[t % len(colors)], alpha=0.7)
+        t += 1
+
+    # Barras de no asignados
+    not_assigned_vals = []
+    h = 0
+    while h < 24:
+        not_assigned_vals.append(hours_data[h][1])
+        h += 1
+    plt.bar(horas, not_assigned_vals, label="No asignados",
+            color="black", alpha=0.5)
+
+    plt.title("Ocupacion de puertas por hora y terminal")
+    plt.xlabel("Hora")
+    plt.ylabel("Puertas asignadas")
+    plt.xticks(horas)
+    plt.legend()
+    plt.show()
