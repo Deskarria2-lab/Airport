@@ -11,7 +11,7 @@ import math
 ########################################
 
 class Aircraft:
-    def __init__(self, id, airline, origin, arrival_time, destination, departure_time):
+    def __init__(self, id, airline, origin, arrival_time, destination="", departure_time=""):
         self.id = id
         self.airline = airline
         self.origin = origin
@@ -54,6 +54,9 @@ def PlotArrivals(aircraft_list):
     while i < len(aircraft_list):
         aircraft = aircraft_list[i]
         partes_hora = aircraft.arrival_time.split(':')
+        if partes_hora[0] == '':
+            i += 1
+            continue
         hora_entera = int(partes_hora[0])
         if 0 <= hora_entera < 24:
             h_cont[hora_entera] += 1
@@ -196,8 +199,7 @@ def LongDistanceArrivals (aircraft_list):                   #REHACER
         distancia_km = radio_tierra * c
         if distancia_km > 2000:
             l_flights.append(aircraft)
-        return l_flights
-    return None
+    return l_flights
 
 #FUNCIONES V.4
 def LoadDepartures(filename):
@@ -211,7 +213,7 @@ def LoadDepartures(filename):
                 linea_limpia = linea.strip()
                 if linea_limpia != "":
                     partes = linea_limpia.split()
-                    if len(partes) == 4:
+                    if len(partes) == 4 and len(partes[0]) > 0:
                         new_aircraft = Aircraft(
                             id = partes[0],
                             airline = partes[3],

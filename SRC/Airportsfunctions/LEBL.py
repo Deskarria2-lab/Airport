@@ -15,11 +15,12 @@ class BoardingArea:                                                 #   Boarding
         self.sch = sch                                            #   Is schengen the Boarding area?
         self.gate_list = []                                         #   List of Gate's
 
-class Terminal:                                                     #   Terminal Object
+class Terminal:
     def __init__(self, t_name):
         self.t_name = t_name
         self.b_list = []
         self.icao_list = []
+        self.airlines = []
 
 class BarcelonaAP:
     def __init__(self, code):
