@@ -222,7 +222,7 @@ def LoadDepartures(filename):
                         )
                         aircraft_list.append(new_aircraft)
 
-                        linea = f.readline()
+                    linea = f.readline()
         return aircraft_list
     except FileNotFoundError:
         print(f"Error: el archivo {filename} no existe.")
