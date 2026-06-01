@@ -1,6 +1,6 @@
 #OBJETIVO, DEFINIR 4 CLASES
 
-
+import matplotlib.pyplot as plt
 ####################################################    OBJECTS    #################################################################################
 
 class Gate:                                                         #   Gate Object

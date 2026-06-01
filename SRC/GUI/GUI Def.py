@@ -20,7 +20,7 @@ import os
 
 class AirportManagerApp:
                             #   Initialize window and data stores  #
-    def __init__(self, root: tk.Tk):
+    def __init__(self, root:tk.Tk):
         self.root = root
         self.root.title("LEBL · Airport Operations Center")
         self.root.geometry("1200x730")

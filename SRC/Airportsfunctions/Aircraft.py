@@ -11,7 +11,7 @@ import math
 ########################################
 
 class Aircraft:
-    def __init__(self, id, airline, origin, arrival_time):
+    def __init__(self, id, airline, origin, arrival_time, destination, departure_time):
         self.id = id
         self.airline = airline
         self.origin = origin
@@ -27,7 +27,7 @@ def LoadArrivals(filename):
     lines = file.readline()  # Defines the var lines
     aircraft_list = []
     while lines != "":
-        aircrafts = Aircraft("None", "None", 0, "None")
+        aircrafts = Aircraft("None", "None", 0, "None", "None", "None")
         linea_limpia = lines.strip()
         elem = linea_limpia.split()
         id = elem[0]
