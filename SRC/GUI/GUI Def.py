@@ -14,7 +14,7 @@ except ImportError:
 #   External Libraries!
 ########################################
 import tkinter as tk
-from tkinter import messagebox, filedialog
+from tkinter import messagebox, filedialog, simpledialog
 import os
 ########################################
 
@@ -358,8 +358,11 @@ class AirportManagerApp:
         FidsButton(left, "Cargar Estructura", self.load_airport_structure, icon="🏗").pack(fill="x", pady=2)
         FidsButton(left, "Asignar Puertas",   self.assign_gates,           icon="🔀").pack(fill="x", pady=2)
         FidsButton(left, "Ver Ocupación",     self.view_gate_occupancy,    icon="👁", accent=True).pack(fill="x", pady=2)
+        FidsButton(left, "Ocupación por Hora", self.assign_at_time, icon="🕐").pack(fill="x", pady=2)
+        FidsButton(left, "Plot Día Completo", self.plot_day_occupancy, icon="📊", accent=True).pack(fill="x", pady=2)
         self._div(left)
         self._sec(left, "LEYENDA")
+
         for color, label in [(C["green"], "Puerta LIBRE"),                 #   Color legend entries
                              (C["red"],   "Puerta OCUPADA")]:
             leg = tk.Frame(left, bg=C["panel"])
@@ -879,6 +882,28 @@ class AirportManagerApp:
             self.listbox_exam_bot.insert(tk.END, line)
             i += 1
 
+    def assign_at_time(self):
+        if self.bcn_airport is None:
+            messagebox.showwarning("Advertencia", "Primero carga la estructura.")
+            return
+        if not self.aircraft_list:
+            messagebox.showwarning("Advertencia", "No hay vuelos cargados.")
+            return
+        time = tk.simpledialog.askstring("Hora", "Introduce la hora (ej: 08:00):")
+        if not time:
+            return
+        not_assigned = AssignGatesAtTime(self.bcn_airport, self.aircraft_list, time)
+        self._refresh_gate_list()
+        self._set_status(f"Hora {time}: {not_assigned} vuelos sin puerta.", C["accent"])
+
+    def plot_day_occupancy(self):
+        if self.bcn_airport is None:
+            messagebox.showwarning("Advertencia", "Primero carga la estructura.")
+            return
+        if not self.aircraft_list:
+            messagebox.showwarning("Advertencia", "No hay vuelos cargados.")
+            return
+        PlotDayOccupancy(self.bcn_airport, self.aircraft_list)
 
 ########################################
 #   Entry Point
