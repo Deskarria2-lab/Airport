@@ -253,6 +253,7 @@ class AirportManagerApp:
         FidsButton(left, "Llegadas por hora",      self.plot_arrivals,    icon="📈").pack(fill="x", pady=2)
         FidsButton(left, "Por aerolínea",          self.plot_airlines,    icon="🏷").pack(fill="x", pady=2)
         FidsButton(left, "Schengen vs No",         self.plot_flight_type, icon="🌍", accent=True).pack(fill="x", pady=2)
+        FidsButton(left, "Mapa KML", self.map_aircrafts, icon="🗺", accent=True).pack(fill="x", pady=2)
 
         right = tk.Frame(row, bg=C["bg"])                                   #   Right side: three independent trays
         right.pack(side="left", fill="both", expand=True)
@@ -337,7 +338,7 @@ class AirportManagerApp:
             selectbackground=C["accent"], selectforeground=C["bg"],
             relief="flat", font=F_MONO,
             highlightthickness=0, activestyle="none",
-            borderwidth=0, height=8, yscrollcommand=sb_bot.set)
+            borderwidth=0, height=10, yscrollcommand=sb_bot.set)
         self.listbox_merged.pack(side="left", fill="both", expand=True)
         sb_bot.config(command=self.listbox_merged.yview)
 
@@ -415,7 +416,7 @@ class AirportManagerApp:
         FidsButton(left, "Guardar Datos",         self.exam_save,    icon="💾").pack(fill="x", pady=2)  #   Generic save button → connect to your saver
         self._div(left)
         self._sec(left, "OPERACIONES")
-        FidsButton(left, "Acción 1",              self.exam_action_1, icon="⚙").pack(fill="x", pady=2)  #   Generic action → replace with real function
+        FidsButton(left, "Vuelos Menos de 2 horas",              self.exam_action_1, icon="⚙").pack(fill="x", pady=2)  #   Generic action → replace with real function
         FidsButton(left, "Acción 2",              self.exam_action_2, icon="⚙").pack(fill="x", pady=2)  #   Generic action → replace with real function
         FidsButton(left, "Acción 3",              self.exam_action_3, icon="⚙").pack(fill="x", pady=2)  #   Generic action → replace with real function
         self._div(left)
@@ -549,11 +550,21 @@ class AirportManagerApp:
 
                                 #   Show airport bar chart  #
     def plot_airports(self):
-        plot_airport(self.airports_list)
+        if not self.airports_list:
+            messagebox.showwarning("Advertencia", "Es requerido un conjunto de airports!.")
+        else:
+            plot_airport(self.airports_list)
 
-                                #   Generate KML map file  #
+        #   Generate KML map file  #
     def map_airports(self):
+        if not self.airports_list:
+            messagebox.showwarning("Advertencia", "Es requerido un conjunto de airports!.")
+            return None
         map_airport(self.airports_list)
+        if map_airport(self.airports_list) == -1:
+            messagebox.showwarning("ERROR", "Algo esta MAL!.")
+        else:
+            messagebox.showinfo("Info", "Archivo KML creado.")
 
                                 #   Refresh the airports listbox  #
     def update_airports(self):
@@ -573,7 +584,18 @@ class AirportManagerApp:
     #   Flights Logic
     ########################################
 
-                                #   Load arrivals from a txt file  #
+    def map_aircrafts(self):
+        if not self.aircraft_list:
+            messagebox.showwarning("Advertencia", "Es requerido un conjunto de aircrafts!.")
+            return None
+        MapFlights(self.aircraft_list)
+        if MapFlights(self.aircraft_list) == -1:
+            messagebox.showwarning("ERROR", "Algo esta MAL!.")
+        else:
+            messagebox.showinfo("Info", "Archivo KML creado.")
+
+
+                #   Load arrivals from a txt file  #
     def load_flights(self):
         file = filedialog.askopenfilename(filetypes=[("Text", "*.txt")])
         if not file:                                                        #   User cancelled the dialog
@@ -820,10 +842,9 @@ class AirportManagerApp:
         if not self.exam_list:                                              #   Check data is loaded
             messagebox.showwarning("Sin datos", "Primero carga los datos.")
             return
-        # result = YourFunction1(self.exam_list)                           #   ← Replace with real function
-        # self.exam_list = result
-        self.exam_update_top()                                              #   Refresh upper tray
-        self._set_status("Acción 1 ejecutada.", C["green"])
+        # result = YourFunction2(self.exam_list)                           #   ← Replace with real function
+        self.exam_update_bot()                                              #   Refresh lower tray
+        self._set_status("Acción 2 ejecutada.", C["green"])
 
                                 #   Generic action 2: replace with real logic  #
     def exam_action_2(self):

@@ -169,7 +169,7 @@ def MapFlights (aircraft_list):                         #REVISAR
             file.write('</Document></kml>')
 
     except Exception as e:
-        print("Error al generar archivo KMl")
+        return -1
 
 def LongDistanceArrivals (aircraft_list):                   #REHACER
     l_flights = []
@@ -294,6 +294,22 @@ def MergeMovements(arrivals, departures):
         j += 1
 
     return merged_list
+def exam_merged(aircrafts):
+    i = 0
+    j = 0
+    time_in_airport_list = []
+    while j < len(aircrafts):
+        aircraft = aircrafts[j]
+        time_arrival = time_to_mins(aircraft.arrival_time)
+        time_departure = time_to_mins(aircraft.departure_time)
+        time_in_airport = time_arrival - time_departure
+        if time_in_airport < 120:
+            time_in_airport_list.append(aircraft)
+            i += 1
+        j += 1
+    print(j)
+    return i
+
 
 def NightAircraft(aircrafts):
     if len(aircrafts) == 0:
@@ -314,11 +330,11 @@ def NightAircraft(aircrafts):
 if __name__ == "__main__":
     # airport_list = LoadAirports('../Files/Airports.txt')
     # print(airport_list)
-    aircraft_list = LoadArrivals('../../Files/Arrivals.txt')
-    print(aircraft_list)
-    PlotArrivals(aircraft_list)
-    SaveFlights(aircraft_list, '../../Files/SaveFlights.txt')
-    PlotAirlines(aircraft_list)
-    PlotFlighType(aircraft_list)
-    MapFlights(aircraft_list)
-    LongDistanceArrivals(aircraft_list)
+    aircrafts = LoadArrivals('../../Files/Arrivals.txt')
+    print(aircrafts)
+    PlotArrivals(aircrafts)
+    SaveFlights(aircrafts, '../../Files/SaveFlights.txt')
+    PlotAirlines(aircrafts)
+    PlotFlighType(aircrafts)
+    MapFlights(aircrafts)
+    LongDistanceArrivals(aircrafts)

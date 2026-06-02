@@ -140,15 +140,17 @@ def plot_airport(airports):
     plt.show()
 
 def map_airport(airports):
-    kml = simplekml.Kml()
-    i = 0
-    while i < len(airports):
-        pnt = kml.newpoint(name=str(airports[i].icao), coords=[(airports[i].lon, airports[i].lat)])
-        if is_schengen_airport(str(airports[i].icao)):
-            pnt.style.labelstyle.color = simplekml.Color.green
-            # pnt.style.iconstyle.icon.href = "schengen-Photoroom.png"          PARA FUTURO
-        else:
-            pnt.style.labelstyle.color = simplekml.Color.red
-        i += 1
-    kml.save("airports_google_earth.kml")
-    print("Map Airports Done")
+    try:
+        kml = simplekml.Kml()
+        i = 0
+        while i < len(airports):
+            pnt = kml.newpoint(name=str(airports[i].icao), coords=[(airports[i].lon, airports[i].lat)])
+            if is_schengen_airport(str(airports[i].icao)):
+                pnt.style.labelstyle.color = simplekml.Color.green
+                # pnt.style.iconstyle.icon.href = "schengen-Photoroom.png"          PARA FUTURO
+            else:
+                pnt.style.labelstyle.color = simplekml.Color.red
+            i += 1
+        kml.save("airports_google_earth.kml")
+        print("Map Airports Done")
+    except Exception as e: return -1
