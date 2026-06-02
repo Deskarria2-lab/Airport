@@ -49,32 +49,40 @@ def print_airport(airport):
           " , " + str(airport.lon))
 
                             #   Load Airports from txt file (V0.0)  #
-def load_airports(filename):   #PARA REVISAR!!!! BASTANTE POCHO!!!!
-    file = open(filename, "r")                                              #   Load the txt airport file
-    next(file)                                                              #   Ignore the first line
-    lines = file.readline()                                                 #   Defines the var lines
-    airports = []                                                           #   Create Airport list
-    while lines != "":                                                      #   while line is not empty
-        airport = Airport("None", 0, 0)
-        elem = lines.strip("\t")                                            #   Var elem that strips a line
-        elem = elem.split(" ")                                              #   Strip empty space, vector 3 value
-        icao = elem[0]                                                      #   ICAO is elem 1 of vect elem
-        lat = elem[1][1:7]                                                  #   Lat is elem 2, starts in 1 and end's in 7
-        lat = int(lat[0:2]) + int(lat[2:4])/60 + int(lat[4:6])/3600         #   Calculate lat
-        lon = elem[2][1:8]                                                  #   Lon is elem 3, starts in 1 and end's in 7
-        lon = int(lon[1:3]) + int(lon[3:5])/60 + int(lon[5:7])/3600         #   Calculate lon
-        if elem[1][0] == 'S':                                               #   If lat is in South
-            lat = -lat                                                      #   Negate it, oposite direction!
-        if elem[2][0] == 'W':                                               #   If lon is in West
-            lon = -lon                                                      #   Negate it, oposite direction!
-        airport.icao = icao
-        airport.lat = lat
-        airport.lon = lon
-        TryFormat(airport)
-        airports.append(airport)                                            #   Append the data in airports list
-        lines = file.readline()                                             #   Next Line to reed
+def load_airports(filename):
+    try:
+        file = open(filename, "r")                                          #   Open the txt airport file
+    except FileNotFoundError:
+        return []                                                           #   File not found: return empty list
+    next(file)                                                              #   Ignore header line
+    lines = file.readline()                                                 #   Read first data line
+    airports = []                                                           #   Create airport list
+    while lines != "":                                                      #   While line is not empty
+        line_clean = lines.strip()                                          #   Remove leading/trailing whitespace
+        if line_clean != "":                                                #   Skip blank lines
+            elem = line_clean.split()                                       #   FIXED: split() handles any whitespace
+            if len(elem) >= 3:                                              #   Only process well-formed lines
+                try:
+                    icao = elem[0]                                          #   ICAO code
+                    lat_str = elem[1]                                       #   Latitude string e.g. N413456
+                    lon_str = elem[2]                                       #   Longitude string e.g. W0823456
+                    lat_digits = lat_str[1:7]                               #   Extract 6 digits after N/S
+                    lat = int(lat_digits[0:2]) + int(lat_digits[2:4])/60 + int(lat_digits[4:6])/3600
+                    lon_digits = lon_str[1:8]                               #   Extract 7 digits after E/W
+                    lon = int(lon_digits[0:3]) + int(lon_digits[3:5])/60 + int(lon_digits[5:7])/3600
+                    if lat_str[0] == 'S':                                   #   South → negative latitude
+                        lat = -lat
+                    if lon_str[0] == 'W':                                   #   West → negative longitude
+                        lon = -lon
+                    airport = Airport(icao, lat, lon)                       #   Create Airport object
+                    TryFormat(airport)                                      #   Validate format
+                    set_schengen(airport)                                   #   FIXED: set Schengen on load
+                    airports.append(airport)                                #   Add to list
+                except Exception:                                           #   Skip malformed lines silently
+                    pass
+        lines = file.readline()                                             #   Advance to next line
     file.close()                                                            #   Close the file
-    return airports                                                      #   Return's a vect airports with all data
+    return airports                                                         #   Return list of airports
 
                                 #   Save sch airports in txt file!  #
 def save_schengen_airports(airports, filename):

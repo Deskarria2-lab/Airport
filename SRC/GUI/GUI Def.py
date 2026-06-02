@@ -517,7 +517,7 @@ class AirportManagerApp:
         file = filedialog.askopenfilename(filetypes=[("Text", "*.txt")])
         if not file:                                                        #   User cancelled the dialog
             return
-        self.airports_list = load_airports(file)                           #   Load via Airport module
+        self.airports_list = load_airports(file)                           #   Load via Airport module (sets Schengen)
         self.update_airports()
         self._set_status(f"Aeropuertos cargados: {len(self.airports_list)}", C["green"])
 
@@ -572,11 +572,15 @@ class AirportManagerApp:
         i = 0                                                               #   Counter
         while i < len(self.airports_list):                                  #   While not end of list
             ap = self.airports_list[i]
-            schengen = "✓ SCH" if getattr(ap, "schengen", False) else "  —  "
-            line = f"  {ap.icao:<8}  {str(ap.lat):<14}  {str(ap.lon):<14}  {schengen}"
+            if getattr(ap, "schengen", False):                             #   Schengen: green check + label
+                sch_tag = "✔ SCHENGEN"
+                fg_color = C["green"]
+            else:                                                           #   Non-Schengen: red cross + label
+                sch_tag = "✘ NO SCH  "
+                fg_color = C["red"]
+            line = f"  {ap.icao:<8}  {str(ap.lat):<14}  {str(ap.lon):<14}  {sch_tag}"
             self.listbox_airports.insert(tk.END, line)
-            if getattr(ap, "schengen", False):                             #   Highlight Schengen in sky blue
-                self.listbox_airports.itemconfig(tk.END, fg=C["accent2"])
+            self.listbox_airports.itemconfig(tk.END, fg=fg_color)          #   Color whole row by Schengen status
             i += 1
         self._update_stats()
 
