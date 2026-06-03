@@ -141,10 +141,10 @@ def plot_airport(airports):
             n_sch_list += 1
         i += 1
     x = "Airports"
-    y = [sch_list, n_sch_list]
-    fig, ax = plt.subplots()
-    ax.bar(x,y)
-    # plt.ylabel("Airports")
+    plt.bar(x, [sch_list], label="Schengen", color='blue')
+    plt.bar(x, [n_sch_list], bottom=[sch_list], label="No Schengen", color='red')
+    plt.title('Proporcion Schengen vs No Schengen')
+    plt.ylabel('Numero aeropuertos')
     plt.show()
 
 def map_airport(airports):
